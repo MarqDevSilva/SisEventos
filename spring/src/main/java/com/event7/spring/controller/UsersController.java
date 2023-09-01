@@ -1,6 +1,5 @@
 package com.event7.spring.controller;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -55,5 +54,5 @@ public class UsersController{
         usuarioLogado.setComplemento(usersDTO.complemento());
 
         return usersService.update(usersMapper.toDTO(usuarioLogado));
-    }   
+    }
 }

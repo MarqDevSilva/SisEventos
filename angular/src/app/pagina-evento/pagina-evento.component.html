@@ -1,0 +1,12 @@
+<div class="container" style="background-image:url('/assets/evento.jpg')">
+  <div class= "informacoesBasicas" *ngIf="informacoes">
+    <div class="nomeEvento">
+      <h1>{{ informacoes.nome }}</h1>
+    </div>
+    <div class="dataEvento">
+      <span>De <strong>{{ informacoes.dataInicial | date: 'dd, MMMM'}}</strong> a <strong>{{ informacoes.dataFinal | date: 'dd, MMMM'}}</strong></span>
+    </div>
+  </div>
+</div>
+
+

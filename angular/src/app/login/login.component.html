@@ -1,0 +1,34 @@
+<app-toolbar-inicial></app-toolbar-inicial>
+
+<div class="container-card">
+  <mat-card class="card">
+    <mat-card-header class="card-header">
+        <mat-card-title>Entrar</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="card-content">
+        <form>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>E-mail</mat-label>
+            <input matInput [(ngModel)]="usuario.login" name="login" required="">
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Senha</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="usuario.password" name="password">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+        </form>
+    </mat-card-content>
+    <mat-card-actions class="card-actions">
+          <span>
+            <button mat-fab extended color="primary" (click)="fazerLogin()">Entrar</button>
+          </span>
+          <span class="links">
+            <a href="cadastro">Cadastre-se</a>
+            <a href="cadastro">Esqueceu sua senha?</a>
+        </span>
+    </mat-card-actions>
+  </mat-card>
+</div>

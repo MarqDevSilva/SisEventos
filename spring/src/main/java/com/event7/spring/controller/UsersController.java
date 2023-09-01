@@ -17,6 +17,7 @@ import com.event7.spring.service.UsersService;
 @RequestMapping("/api/conta")
 
 //Adicionando comentário teste para o GIT
+//Testando MERGER
 public class UsersController{
     
     private final UsersService usersService;

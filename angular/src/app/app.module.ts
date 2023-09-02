@@ -33,9 +33,7 @@ import { AuthService } from './auth-service/auth.service';
 import { CommonModule } from '@angular/common';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-
-
-
+import { EditorComponent } from './editor/editor.component';
 
 @NgModule({
     declarations: [
@@ -49,7 +47,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
         PaginaEventoComponent,
         InscricoesComponent,
         RelatorioComponent,
-        EditarEventoComponent
+        EditarEventoComponent,
+        EditorComponent
     ],
     providers: [ AuthService],
     bootstrap: [AppComponent],

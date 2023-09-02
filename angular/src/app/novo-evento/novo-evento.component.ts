@@ -16,6 +16,7 @@ export class NovoEventoComponent {
     nome: ['', Validators.required],
     dataInicial: new FormControl (null,  Validators.required),
     dataFinal: new FormControl(null, Validators.required),
+    tituloEvento: [''],
     imgCapa: new FormControl()
   })
 

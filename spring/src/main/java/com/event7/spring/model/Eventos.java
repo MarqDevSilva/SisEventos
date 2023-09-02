@@ -36,6 +36,9 @@ public class Eventos {
     @Column(length = 100, nullable = false)
     private Date dataFinal;
 
+    @Column(length = 100, nullable = false)
+    private String tituloEvento;
+
     @Lob
     @Column(name = "BYTE_ARQUIVO")
     private byte[] imgCapa;

@@ -10,12 +10,10 @@ export class EditorComponent {
   bgColor: string = '#ffffff';
 
   changeFontSize() {
-    // Aplicar o tamanho da fonte aos elementos HTML relevantes
     document.body.style.fontSize = `${this.fontSize}px`;
   }
 
   changeBgColor() {
-    // Aplicar a cor de fundo à página
     document.body.style.backgroundColor = this.bgColor;
   }
 }

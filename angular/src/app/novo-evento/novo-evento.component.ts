@@ -19,6 +19,7 @@ export class NovoEventoComponent {
     maxIncricoes: [],
     whatsApp: [],
     tituloEvento: [''],
+    backgroundColor: [],
     imgCapa: new FormControl()
   })
 

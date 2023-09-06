@@ -77,6 +77,9 @@ import { EditorComponent } from './editor/editor.component';
         MatSelectModule,
         ShareModule,
         CommonModule
+    ],
+    exports:[
+      EditorComponent
     ]
 })
 export class AppModule { }

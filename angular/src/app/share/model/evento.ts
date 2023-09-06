@@ -7,5 +7,6 @@ export interface InformacoesBasicas {
   maxIncricoes: number | null;
   whatsApp: number | null;
   tituloEvento: string | null;
+  backgroundColor: string | null;
   imgCapa: number[];
 }

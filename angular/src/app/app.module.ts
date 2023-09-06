@@ -33,7 +33,15 @@ import { AuthService } from './auth-service/auth.service';
 import { CommonModule } from '@angular/common';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import { EditorComponent } from './editor/editor.component';
+import { EventoFormComponent } from './components/evento/evento-form/evento-form.component';
+import { EventoListComponent } from './components/evento/evento-list/evento-list.component';
+import { NewUserComponent } from './components/user/new-user/new-user.component';
+import { AccountUserComponent } from './components/user/account-user/account-user.component';
+import { EventoPageComponent } from './components/evento/evento-page/evento-page.component';
+import { ToolbarLoginComponent } from './components/toolbar/toolbar-login/toolbar-login.component';
+import { ToolbarPrincipalComponent } from './components/toolbar/toolbar-principal/toolbar-principal.component';
+import { ToolbarIndexComponent } from './components/toolbar/toolbar-index/toolbar-index.component';
+import { ErrorDialogComponent } from './components/dialog/error-dialog/error-dialog.component';
 
 @NgModule({
     declarations: [
@@ -48,7 +56,15 @@ import { EditorComponent } from './editor/editor.component';
         InscricoesComponent,
         RelatorioComponent,
         EditarEventoComponent,
-        EditorComponent
+        EventoFormComponent,
+        EventoListComponent,
+        NewUserComponent,
+        AccountUserComponent,
+        EventoPageComponent,
+        ToolbarLoginComponent,
+        ToolbarPrincipalComponent,
+        ToolbarIndexComponent,
+        ErrorDialogComponent,
     ],
     providers: [ AuthService],
     bootstrap: [AppComponent],
@@ -79,7 +95,6 @@ import { EditorComponent } from './editor/editor.component';
         CommonModule
     ],
     exports:[
-      EditorComponent
     ]
 })
 export class AppModule { }

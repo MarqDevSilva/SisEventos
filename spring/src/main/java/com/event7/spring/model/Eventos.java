@@ -36,11 +36,8 @@ public class Eventos {
     @Column(length = 100, nullable = false)
     private Date dataFinal;
 
-    @Column(length = 100, nullable = false)
+    @Column(length = 100)
     private String tituloEvento;
-
-    @Colmn
-    private String backgroundColor;
 
     @Lob
     @Column(name = "BYTE_ARQUIVO")

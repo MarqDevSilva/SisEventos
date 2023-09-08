@@ -6,7 +6,7 @@ import { InformacoesBasicas } from 'src/app/share/model/evento';
 @Injectable({
   providedIn: 'root'
 })
-export class NovoEventoService {
+export class EventoService {
 
   private readonly API = 'api/eventos';
 

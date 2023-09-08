@@ -1,1 +1,58 @@
-<p>evento-form works!</p>
+<mat-card>
+  <mat-accordion class="mat-accordion">
+    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Informações Básicas
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <app-form-info-basic></app-form-info-basic>
+
+      <mat-action-row>
+        <button mat-button color="primary" (click)="nextStep()">Próximo</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Formas de Pagamento
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-action-row>
+        <button mat-button color="warn" (click)="prevStep()">Voltar</button>
+        <button mat-button color="primary" (click)="nextStep()">Próximo</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Forulário de Inscrição
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-action-row>
+        <button mat-button color="warn" (click)="prevStep()">Voltar</button>
+        <button mat-button color="primary" (click)="nextStep()">Próximo</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Página do Evento
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <app-form-page></app-form-page>
+
+      <mat-action-row>
+        <button mat-button color="warn" (click)="prevStep()">Voltar</button>
+        <button mat-button color="primary" (click)="Exit()">Finalizar</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+</mat-card>

@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from 'src/app/auth-service/auth.service';
@@ -18,5 +19,11 @@ export class EventoService {
   save(evento: Partial<InformacoesBasicas>){
     const headers = this.authService.auth();
     return this.httpClient.post<InformacoesBasicas>(this.API, evento);
+  }
+
+  getInfo(): Observable<InformacoesBasicas[]>{
+    const headers = this.authService.auth();
+    return this.httpClient.get<InformacoesBasicas[]>(this.API, {headers}).pipe(
+    );
   }
 }

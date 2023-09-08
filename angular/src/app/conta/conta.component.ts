@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Conta } from '../share/model/conta';
+import { Conta } from '../model/conta';
 import { ContaService } from './service/conta.service';
 
 @Component({

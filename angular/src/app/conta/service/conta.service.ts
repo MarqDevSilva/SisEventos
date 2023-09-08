@@ -2,7 +2,7 @@ import { AuthService } from 'src/app/auth-service/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Conta } from 'src/app/share/model/conta';
+import { Conta } from 'src/app/model/conta';
 
 @Injectable({
   providedIn: 'root'

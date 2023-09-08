@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 import { Component } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { ProgressBarMode } from '@angular/material/progress-bar';
-import { InformacoesBasicas } from 'src/app/share/model/evento';
+import { Evento } from 'src/app/model/evento';
 import { EventoService } from 'src/app/services/evento/evento.service';
 
 @Component({
@@ -12,10 +12,9 @@ import { EventoService } from 'src/app/services/evento/evento.service';
 })
 export class EventoListComponent {
 
-  informacoes: Observable<InformacoesBasicas[]> | undefined;
+  informacoes: Observable<Evento[]> | null;
 
-  constructor(
-    private service: EventoService){
+  constructor(private service: EventoService){
     this.informacoes = this.service.getInfo().pipe();
   }
 

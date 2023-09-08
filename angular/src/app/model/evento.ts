@@ -1,4 +1,4 @@
-export interface InformacoesBasicas {
+export interface Evento {
 
   endereco: string | null;
   nome: string | null;

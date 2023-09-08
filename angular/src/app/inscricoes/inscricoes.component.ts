@@ -1,4 +1,4 @@
-import { InformacoesBasicas } from 'src/app/share/model/evento';
+import { InformacoesBasicas } from 'src/app/model/evento';
 import { Component } from '@angular/core';
 
 interface Food {

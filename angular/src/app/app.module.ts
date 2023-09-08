@@ -37,7 +37,6 @@ import { ToolbarPrincipalComponent } from './components/toolbar/toolbar-principa
 import { AccountUserComponent } from './components/user/account-user/account-user.component';
 import { NewUserComponent } from './components/user/new-user/new-user.component';
 import { ContaComponent } from './conta/conta.component';
-import { EventosComponent } from './eventos/eventos.component';
 import { InscricoesComponent } from './inscricoes/inscricoes.component';
 import { LoginComponent } from './login/login.component';
 import { PaginaEventoComponent } from './pagina-evento/pagina-evento.component';
@@ -52,7 +51,6 @@ import { EventoListComponent } from './components/evento/evento-list/evento-list
         AppComponent,
         ContaComponent,
         LoginComponent,
-        EventosComponent,
         PaginaEventoComponent,
         InscricoesComponent,
         RelatorioComponent,

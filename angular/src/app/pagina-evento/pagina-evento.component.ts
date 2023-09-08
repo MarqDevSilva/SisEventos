@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { InformacoesBasicas } from 'src/app/share/model/evento';
+import { InformacoesBasicas } from 'src/app/model/evento';
 import { PaginaEventoService } from './service/pagina-evento.service';
 
 

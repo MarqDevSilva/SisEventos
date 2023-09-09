@@ -24,16 +24,16 @@ public class Eventos {
     @JoinColumn(name = "userId")
     private Users user;
 
-    @Column(length = 200, nullable = false)
+    @Column(length = 200)
     private String endereco;
 
-    @Column(length = 200, nullable = false)
+    @Column(length = 200)
     private String nome;
 
-    @Column(length = 100, nullable = false)
+    @Column(length = 100)
     private Date dataInicial;
 
-    @Column(length = 100, nullable = false)
+    @Column(length = 100)
     private Date dataFinal;
 
     @Column(length = 100)

@@ -27,8 +27,9 @@ public class EventosService {
         this.eventosMapper = eventosMapper;
     }
 
-    public List<GetEventosDTO> findByUserId(Long userId) {
-        return eventosRepository.findByUserId(userId)
+    public List<GetEventosDTO> findByUserId() {
+        //return eventosRepository.findByUserId(userId)
+        return eventosRepository.findAll()
             .stream()
             .map(eventosMapper :: toGetDTO)
             .collect(Collectors.toList());

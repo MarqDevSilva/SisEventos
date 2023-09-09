@@ -1,9 +1,9 @@
 package com.event7.spring.controller;
 
 import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.event7.spring.DTO.EventosDTO;
 import com.event7.spring.DTO.GetEventosDTO;
-import com.event7.spring.model.Users;
 import com.event7.spring.service.EventosService;
 
 import jakarta.validation.constraints.NotNull;
@@ -32,10 +31,10 @@ public class EventosController {
     }
 
     @GetMapping
-    public List<GetEventosDTO> findByUserId(Authentication authentication) {
-        Users usuarioLogado = (Users) authentication.getPrincipal();
-        Long userId = usuarioLogado.getId();
-        return eventosService.findByUserId(userId);
+    public List<GetEventosDTO> findByUserId() {
+        //Users usuarioLogado = (Users) authentication.getPrincipal();
+        //Long userId = usuarioLogado.getId();
+        return eventosService.findByUserId();
     }
 
     @GetMapping("/{endereco}")

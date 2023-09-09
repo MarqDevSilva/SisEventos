@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { InformacoesBasicas } from 'src/app/model/evento';
+import { Evento } from 'src/app/model/evento';
 import { PaginaEventoService } from './service/pagina-evento.service';
 
 
@@ -12,7 +12,7 @@ import { PaginaEventoService } from './service/pagina-evento.service';
 })
 export class PaginaEventoComponent implements OnInit{
 
-informacoes?: InformacoesBasicas;
+informacoes?: Evento;
 
 constructor(
   private Service: PaginaEventoService,

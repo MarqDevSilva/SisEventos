@@ -1,4 +1,4 @@
-import { InformacoesBasicas } from 'src/app/model/evento';
+import { Evento } from 'src/app/model/evento';
 import { Component } from '@angular/core';
 
 interface Food {
@@ -13,7 +13,7 @@ interface Food {
 })
 export class InscricoesComponent {
 
-  informacoes: InformacoesBasicas[] = [];
+  informacoes: Evento[] = [];
   displayedColumns = ['name', 'category'];
 
   foods: Food[] = [

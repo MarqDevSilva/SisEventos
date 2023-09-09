@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { InformacoesBasicas } from 'src/app/model/evento';
+import { Evento } from 'src/app/model/evento';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class PaginaEventoService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getInfo(id: string | null): Observable<InformacoesBasicas>{
-    return this.httpClient.get<InformacoesBasicas>(`${this.API}/${id}`)
+  getInfo(id: string | null): Observable<Evento>{
+    return this.httpClient.get<Evento>(`${this.API}/${id}`)
   }
 }

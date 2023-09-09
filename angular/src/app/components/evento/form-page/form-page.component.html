@@ -1,0 +1,10 @@
+<form [formGroup]="form">
+  <mat-expansion-panel [expanded]="true" hideToggle>
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Título do Evento</mat-label>
+      <input matInput formControlName="tituloEvento">
+    </mat-form-field>
+    <h3>Imagem de Capa</h3>
+    <input type="file" (change)="onChange($event)">
+  </mat-expansion-panel>
+</form>

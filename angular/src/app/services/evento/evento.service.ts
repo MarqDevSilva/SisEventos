@@ -23,7 +23,11 @@ export class EventoService {
 
   getInfo(): Observable<Evento[]>{
     const headers = this.authService.auth();
-    return this.httpClient.get<Evento[]>(this.API, {headers}).pipe(
+    return this.httpClient.get<Evento[]>(this.API).pipe(
     );
+  }
+
+  getPage(id: string | null): Observable<Evento>{
+    return this.httpClient.get<Evento>(`${this.API}/${id}`)
   }
 }

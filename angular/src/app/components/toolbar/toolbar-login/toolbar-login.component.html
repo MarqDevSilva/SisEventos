@@ -1,1 +1,18 @@
-<p>toolbar-login works!</p>
+<mat-toolbar color="primary">
+  <span>
+    EventPublish
+  </span>
+
+  <span>
+    <button mat-button class="add-evento" [routerLink]="'/cadastro'">
+      <mat-icon>person_add</mat-icon>
+      Cadastrar
+    </button>
+
+    <button mat-button class="add-evento" [routerLink]="'/login'">
+      <mat-icon>person_pin</mat-icon>
+      Login
+    </button>
+  </span>
+
+</mat-toolbar>

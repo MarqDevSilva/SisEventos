@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
+import { Evento } from 'src/app/model/evento';
+import { EventoService } from 'src/app/services/evento/evento.service';
 
 @Component({
   selector: 'app-evento-page',
@@ -7,4 +11,17 @@ import { Component } from '@angular/core';
 })
 export class EventoPageComponent {
 
+  evento?: Evento;
+
+  constructor(
+    public dialog: MatDialog,
+    private router: ActivatedRoute,
+    private service: EventoService){
+    this.getPage();
+  }
+
+  getPage(){
+    const id = this.router.snapshot.paramMap.get("id");
+    this.service.getPage(id).subscribe((evento) => (this.evento = evento));
+  }
 }

@@ -21,12 +21,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './routes/app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthService } from './auth-service/auth.service';
-import { CadastroComponent } from './cadastro/cadastro.component';
 import { ErrorDialogComponent } from './components/dialog/error-dialog/error-dialog.component';
 import { EventoFormComponent } from './components/evento/evento-form/evento-form.component';
+import { EventoListComponent } from './components/evento/evento-list/evento-list.component';
 import { EventoPageComponent } from './components/evento/evento-page/evento-page.component';
 import { FormInfoBasicComponent } from './components/evento/form-info-basic/form-info-basic.component';
 import { FormPageComponent } from './components/evento/form-page/form-page.component';
@@ -36,24 +35,10 @@ import { ToolbarLoginComponent } from './components/toolbar/toolbar-login/toolba
 import { ToolbarPrincipalComponent } from './components/toolbar/toolbar-principal/toolbar-principal.component';
 import { AccountUserComponent } from './components/user/account-user/account-user.component';
 import { NewUserComponent } from './components/user/new-user/new-user.component';
-import { ContaComponent } from './conta/conta.component';
-import { InscricoesComponent } from './inscricoes/inscricoes.component';
-import { LoginComponent } from './login/login.component';
-import { PaginaEventoComponent } from './pagina-evento/pagina-evento.component';
-import { RelatorioComponent } from './relatorio/relatorio.component';
-import { ShareModule } from './share/share.module';
-import { EventoListComponent } from './components/evento/evento-list/evento-list.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        CadastroComponent,
-        AppComponent,
-        ContaComponent,
-        LoginComponent,
-        PaginaEventoComponent,
-        InscricoesComponent,
-        RelatorioComponent,
         EventoFormComponent,
         NewUserComponent,
         AccountUserComponent,
@@ -66,9 +51,8 @@ import { EventoListComponent } from './components/evento/evento-list/evento-list
         FormPayComponent,
         FormPageComponent,
         EventoListComponent,
-
     ],
-    providers: [ AuthService],
+    providers: [],
     bootstrap: [AppComponent],
     imports: [
         MatExpansionModule,
@@ -93,12 +77,8 @@ import { EventoListComponent } from './components/evento/evento-list/evento-list
         MatDatepickerModule,
         MatNativeDateModule,
         MatSelectModule,
-        ShareModule,
         CommonModule
     ],
-    exports:[
-        FormInfoBasicComponent,
-        FormPageComponent
-    ]
+    exports:[ ]
 })
 export class AppModule { }

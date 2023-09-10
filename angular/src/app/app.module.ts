@@ -21,7 +21,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
-import { AppRoutingModule } from './routes/app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ErrorDialogComponent } from './components/dialog/error-dialog/error-dialog.component';
 import { EventoFormComponent } from './components/evento/evento-form/evento-form.component';
@@ -35,6 +35,7 @@ import { ToolbarLoginComponent } from './components/toolbar/toolbar-login/toolba
 import { ToolbarPrincipalComponent } from './components/toolbar/toolbar-principal/toolbar-principal.component';
 import { AccountUserComponent } from './components/user/account-user/account-user.component';
 import { NewUserComponent } from './components/user/new-user/new-user.component';
+import { EventoRoutes } from './routes/evento.routing';
 
 @NgModule({
     declarations: [
@@ -56,6 +57,7 @@ import { NewUserComponent } from './components/user/new-user/new-user.component'
     bootstrap: [AppComponent],
     imports: [
         MatExpansionModule,
+        EventoRoutes,
         MatSlideToggleModule,
         RouterModule,
         BrowserModule,

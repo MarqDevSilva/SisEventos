@@ -24,7 +24,7 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './routes/app-routing.module';
 import { AppComponent } from './app.component';
 import { ErrorDialogComponent } from './components/dialog/error-dialog/error-dialog.component';
-import { EventoFormComponent } from './components/evento/evento-form/evento-form.component';
+import { EventoFormComponent } from './containers/evento-form/evento-form.component';
 import { EventoListComponent } from './components/evento/evento-list/evento-list.component';
 import { EventoPageComponent } from './components/evento/evento-page/evento-page.component';
 import { FormInfoBasicComponent } from './components/evento/form-info-basic/form-info-basic.component';
@@ -35,7 +35,7 @@ import { ToolbarLoginComponent } from './components/toolbar/toolbar-login/toolba
 import { ToolbarPrincipalComponent } from './components/toolbar/toolbar-principal/toolbar-principal.component';
 import { AccountUserComponent } from './components/user/account-user/account-user.component';
 import { NewUserComponent } from './components/user/new-user/new-user.component';
-import { EventosComponent } from './components/evento/eventos/eventos.component';
+import { EventosComponent } from './containers/eventos/eventos.component';
 
 @NgModule({
     declarations: [

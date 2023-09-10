@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { EventoFormComponent } from '../components/evento/evento-form/evento-form.component';
+import { EventoFormComponent } from '../containers/evento-form/evento-form.component';
 import { EventoPageComponent } from '../components/evento/evento-page/evento-page.component';
-import { EventosComponent } from '../components/evento/eventos/eventos.component';
+import { EventosComponent } from '../containers/eventos/eventos.component';
 import { ToolbarPrincipalComponent } from '../components/toolbar/toolbar-principal/toolbar-principal.component';
 
 

@@ -17,4 +17,6 @@ export class EventoListComponent {
   value = 50;
   bufferValue = 75;
 
+  onEdit(){
+  }
 }

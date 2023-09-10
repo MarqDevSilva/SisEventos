@@ -13,7 +13,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class EventoListComponent {
 
-  informacoes: Observable<Evento[]> | null;
+eventos: Observable<Evento[]> | null;
 
   color: ThemePalette = 'primary';
   mode: ProgressBarMode = 'determinate';
@@ -25,7 +25,7 @@ export class EventoListComponent {
     private router: Router,
     private activatedRoute: ActivatedRoute
     ){
-    this.informacoes = this.service.getInfo().pipe();
+    this.eventos = this.service.getInfo().pipe();
   }
 
   onAdd(){

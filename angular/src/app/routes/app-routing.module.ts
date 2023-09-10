@@ -8,9 +8,8 @@ import { EventoPageComponent } from '../components/evento/evento-page/evento-pag
 
 const routes: Routes = [
   {path:'page/:id', component: EventoPageComponent},
-  { path: 'eventos', redirectTo: 'eventos/list', pathMatch: 'full' },
-  {
-    path: 'eventos',
+  {path: 'eventos', redirectTo: 'eventos', pathMatch: 'full' },
+  {path: 'eventos',
     children: [
       { path: '', component: EventoListComponent, title: 'Eventos'},
       { path: 'new', component: EventoFormComponent, title: 'Novo Evento'},

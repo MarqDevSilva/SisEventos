@@ -35,6 +35,7 @@ import { ToolbarLoginComponent } from './components/toolbar/toolbar-login/toolba
 import { ToolbarPrincipalComponent } from './components/toolbar/toolbar-principal/toolbar-principal.component';
 import { AccountUserComponent } from './components/user/account-user/account-user.component';
 import { NewUserComponent } from './components/user/new-user/new-user.component';
+import { EventosComponent } from './components/evento/eventos/eventos.component';
 
 @NgModule({
     declarations: [
@@ -51,6 +52,7 @@ import { NewUserComponent } from './components/user/new-user/new-user.component'
         FormPayComponent,
         FormPageComponent,
         EventoListComponent,
+        EventosComponent,
     ],
     providers: [],
     bootstrap: [AppComponent],

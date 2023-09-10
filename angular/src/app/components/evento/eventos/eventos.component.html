@@ -1,0 +1,13 @@
+<mat-card class="container">
+  <mat-toolbar class="toolbar" color="primary">
+    <span><mat-icon>view_headline</mat-icon>Eventos</span>
+    <button mat-fab extended class="add-evento" (click)="onAdd()">
+      <mat-icon>add_circle_outline</mat-icon>
+      Novo Evento
+    </button>
+  </mat-toolbar>
+
+  <app-evento-list *ngIf="eventos | async as evento" [eventos]="evento"></app-evento-list>
+
+</mat-card>
+

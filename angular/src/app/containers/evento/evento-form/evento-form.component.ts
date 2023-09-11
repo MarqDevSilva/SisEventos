@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-evento-form',
@@ -7,18 +9,22 @@ import { Component } from '@angular/core';
 })
 export class EventoFormComponent {
 
-  step = 0;
+  infoBasic: FormGroup;
 
-  setStep(index: number) {
-    this.step = index;
+  constructor(private formBuilder: FormBuilder) {
+    this.infoBasic = this.formBuilder.group({
+      id: [''],
+      endereco: ['', Validators.required],
+      nome: ['', Validators.required],
+      dataInicial: [new Date(), Validators.required],
+      dataFinal: [new Date(), Validators.required],
+      maxIncricoes: [''],
+      whatsApp: ['']
+    });
   }
 
-  nextStep() {
-    this.step++;
-  }
-
-  prevStep() {
-    this.step--;
+  onSubmit(){
+    console.log('Dados Fomulário', this.infoBasic)
   }
 
   Exit(){}

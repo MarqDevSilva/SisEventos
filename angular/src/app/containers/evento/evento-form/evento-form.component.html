@@ -1,58 +1,37 @@
-<mat-card>
-  <mat-accordion class="mat-accordion">
-    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
+<div class="container">
+  <div class="row justify-content-center">
+    <mat-tab-group class="col-10">
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon>info</mat-icon>
           Informações Básicas
-        </mat-panel-title>
-      </mat-expansion-panel-header>
+        </ng-template>
+        <app-form-info-basic class="form" [infoBasic]="infoBasic" (formSubmitted)="onSubmit()"></app-form-info-basic>
+        <div class="container">
+          <div class="row" id="button">
+            <div class="d-flex justify-content-end">
+              <button mat-raised-button color="primary" (click)="onSubmit()">Próximo Passo</button>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
 
-      <app-form-info-basic></app-form-info-basic>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="example-tab-icon">thumb_up</mat-icon>
+          Second
+        </ng-template>
+        Content 2
+      </mat-tab>
 
-      <mat-action-row>
-        <button mat-button color="primary" (click)="nextStep()">Próximo</button>
-      </mat-action-row>
-    </mat-expansion-panel>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="example-tab-icon">thumb_up</mat-icon>
+          Third
+        </ng-template>
 
-    <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Formas de Pagamento
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-
-      <mat-action-row>
-        <button mat-button color="warn" (click)="prevStep()">Voltar</button>
-        <button mat-button color="primary" (click)="nextStep()">Próximo</button>
-      </mat-action-row>
-    </mat-expansion-panel>
-
-    <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Forulário de Inscrição
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-
-      <mat-action-row>
-        <button mat-button color="warn" (click)="prevStep()">Voltar</button>
-        <button mat-button color="primary" (click)="nextStep()">Próximo</button>
-      </mat-action-row>
-    </mat-expansion-panel>
-
-    <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Página do Evento
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-
-      <app-form-page></app-form-page>
-
-      <mat-action-row>
-        <button mat-button color="warn" (click)="prevStep()">Voltar</button>
-        <button mat-button color="primary" (click)="Exit()">Finalizar</button>
-      </mat-action-row>
-    </mat-expansion-panel>
-  </mat-accordion>
-</mat-card>
+        Content 3
+      </mat-tab>
+  </mat-tab-group>
+  </div>
+</div>

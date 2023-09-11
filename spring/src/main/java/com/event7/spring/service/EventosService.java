@@ -40,10 +40,25 @@ public class EventosService {
             .map(eventosMapper :: toDTO);
     }
 
+    public Optional<EventosDTO> findById(@PathVariable @NotNull Long id){
+        return eventosRepository.findById(id)
+            .map(eventosMapper :: toDTO);
+    }
+
     public EventosDTO novoEvento(EventosDTO eventosDTO){
         Eventos eventos = eventosMapper.toEntity(eventosDTO);
         eventos = eventosRepository.save(eventos);
-
         return eventosMapper.toDTO(eventos);
+    }
+
+    public EventosDTO update(Long id, EventosDTO eventosDTO){
+        Optional<Eventos> optionalEvent = eventosRepository.findById(id);
+        if (optionalEvent.isPresent()) {
+            Eventos eventos = optionalEvent.get();
+            eventos = eventosMapper.toEntity(eventosDTO);
+            eventosRepository.save(eventos);
+            return eventosDTO;
+        }
+        return null;
     }
 }

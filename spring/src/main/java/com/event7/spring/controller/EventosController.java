@@ -8,6 +8,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -17,7 +18,9 @@ import com.event7.spring.DTO.EventosDTO;
 import com.event7.spring.DTO.GetEventosDTO;
 import com.event7.spring.service.EventosService;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
 @Validated
 @RestController
@@ -44,9 +47,27 @@ public class EventosController {
             .orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("edit/{id}")
+    public ResponseEntity<EventosDTO> findById(@PathVariable @NotNull Long id){
+        return eventosService.findById(id)
+            .map(recordFound -> ResponseEntity.ok().body(recordFound))
+            .orElse(ResponseEntity.notFound().build());
+    }
+
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     public EventosDTO novoEvento(@RequestBody EventosDTO eventos){
         return eventosService.novoEvento(eventos);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<EventosDTO> update(@PathVariable @NotNull Long id,
+            @RequestBody EventosDTO evento){
+            EventosDTO updatedEvent = eventosService.update(id, evento);
+            if (updatedEvent != null) {
+                return ResponseEntity.ok(updatedEvent);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        }
 }

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Evento } from 'src/app/model/evento';
 import { EventoService } from 'src/app/services/evento/evento.service';
@@ -14,7 +13,6 @@ export class EventoPageComponent {
   evento?: Evento;
 
   constructor(
-    public dialog: MatDialog,
     private router: ActivatedRoute,
     private service: EventoService){
     this.getPage();

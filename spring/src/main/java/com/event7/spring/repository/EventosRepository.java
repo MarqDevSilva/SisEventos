@@ -12,5 +12,6 @@ import com.event7.spring.model.Eventos;
 @Repository
 public interface EventosRepository extends JpaRepository<Eventos, String> {
     Optional<Eventos> findByEndereco(String endereco);
+    Optional<Eventos> findById(Long id);
     List<Eventos> findByUserId(Long userId);
 }

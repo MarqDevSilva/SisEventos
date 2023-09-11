@@ -22,4 +22,8 @@ export class EventosComponent {
   onAdd(){
     this.router.navigate(['new']);
   }
+
+  onEdit(evento: Evento){
+    this.router.navigate(['edit', evento.id])
+  }
 }

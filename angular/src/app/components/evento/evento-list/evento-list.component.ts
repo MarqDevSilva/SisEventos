@@ -19,6 +19,6 @@ export class EventoListComponent {
   bufferValue = 75;
 
   onEdit(evento: Evento){
-    this.edit.emit(true);
+    this.edit.emit(evento);
   }
 }

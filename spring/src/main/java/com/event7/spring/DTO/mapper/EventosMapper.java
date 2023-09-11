@@ -16,8 +16,8 @@ public class EventosMapper {
         return new EventosDTO(
             eventos.getId(), 
             eventos.getUser(),
-            eventos.getNome(),
-            eventos.getEndereco(), 
+            eventos.getEndereco(),
+            eventos.getNome(), 
             eventos.getDataInicial(), 
             eventos.getDataFinal(),
             eventos.getImgCapa());
@@ -32,9 +32,9 @@ public class EventosMapper {
         if(eventosDTO.id() != null){
             eventos.setId(eventosDTO.id());
         }
-        eventos.setNome(eventosDTO.nome());
         eventos.setUser(eventosDTO.users());
         eventos.setEndereco(eventosDTO.endereco());
+        eventos.setNome(eventosDTO.nome());
         eventos.setDataInicial(eventosDTO.dataInicial());
         eventos.setDataFinal(eventosDTO.dataFinal());
         eventos.setImgCapa(eventosDTO.imgCapa());
@@ -48,8 +48,8 @@ public class EventosMapper {
         }
         return new GetEventosDTO(
             eventos.getId(), 
+            eventos.getEndereco(),
             eventos.getNome(),
-            eventos.getEndereco(), 
             eventos.getDataInicial(), 
             eventos.getDataFinal());
     }

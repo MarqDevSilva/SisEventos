@@ -1,4 +1,4 @@
-<form [formGroup]="infoBasic">
+<form class="form" [formGroup]="infoBasic">
   <div class="container-fluid">
     <div class="row">
       <mat-form-field class="col-12" appearance="outline">
@@ -35,7 +35,7 @@
 
       <mat-form-field class="col-6" appearance="outline">
         <mat-label>Data Final</mat-label>
-        <input matInput [matDatepicker]="dataFinal"  formControlName="dataFinal">
+        <input matInput [matDatepicker]="dataFinal" formControlName="dataFinal">
         <mat-datepicker-toggle matIconSuffix [for]="dataFinal"></mat-datepicker-toggle>
         <mat-datepicker #dataFinal>
           <mat-datepicker-actions>

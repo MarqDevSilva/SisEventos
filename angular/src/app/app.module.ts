@@ -2,9 +2,10 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatMomentDateModule, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { MatNativeDateModule } from '@angular/material/core';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -21,21 +22,22 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
-import { AppRoutingModule } from './routes/app-routing.module';
 import { AppComponent } from './app.component';
 import { ErrorDialogComponent } from './components/dialog/error-dialog/error-dialog.component';
-import { EventoFormComponent } from './containers/evento/evento-form/evento-form.component';
 import { EventoListComponent } from './components/evento/evento-list/evento-list.component';
-import { EventoPageComponent } from './containers/evento/evento-page/evento-page.component';
 import { FormInfoBasicComponent } from './components/evento/form-info-basic/form-info-basic.component';
 import { FormPageComponent } from './components/evento/form-page/form-page.component';
 import { FormPayComponent } from './components/evento/form-pay/form-pay.component';
-import { ToolbarIndexComponent } from './containers/toolbar/toolbar-index/toolbar-index.component';
-import { ToolbarLoginComponent } from './containers/toolbar/toolbar-login/toolbar-login.component';
-import { ToolbarPrincipalComponent } from './containers/toolbar/toolbar-principal/toolbar-principal.component';
 import { AccountUserComponent } from './components/user/account-user/account-user.component';
 import { NewUserComponent } from './components/user/new-user/new-user.component';
 import { EventosComponent } from './containers//evento/eventos/eventos.component';
+import { EventoFormComponent } from './containers/evento/evento-form/evento-form.component';
+import { EventoPageComponent } from './containers/evento/evento-page/evento-page.component';
+import { ToolbarIndexComponent } from './containers/toolbar/toolbar-index/toolbar-index.component';
+import { ToolbarLoginComponent } from './containers/toolbar/toolbar-login/toolbar-login.component';
+import { ToolbarPrincipalComponent } from './containers/toolbar/toolbar-principal/toolbar-principal.component';
+import { AppRoutingModule } from './routes/app-routing.module';
+import { MY_FORMATS } from './util/dataFormat';
 
 @NgModule({
     declarations: [
@@ -54,9 +56,13 @@ import { EventosComponent } from './containers//evento/eventos/eventos.component
         EventoListComponent,
         EventosComponent,
     ],
-    providers: [],
+    providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
+    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },],
     bootstrap: [AppComponent],
     imports: [
+        MatMomentDateModule,
         MatExpansionModule,
         MatSlideToggleModule,
         RouterModule,
@@ -83,4 +89,5 @@ import { EventosComponent } from './containers//evento/eventos/eventos.component
     ],
     exports:[ ]
 })
+
 export class AppModule { }

@@ -18,8 +18,8 @@ export class EventoFormComponent {
       nome: ['', Validators.required],
       dataInicial: [new Date(), Validators.required],
       dataFinal: [new Date(), Validators.required],
-      maxIncricoes: [''],
-      whatsApp: ['']
+      maxIncricoes: ['', Validators.required],
+      whatsApp: ['', Validators.pattern('')]
     });
   }
 

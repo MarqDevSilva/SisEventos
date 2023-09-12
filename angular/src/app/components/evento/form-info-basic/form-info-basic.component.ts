@@ -9,7 +9,11 @@ import { FormGroup } from '@angular/forms';
 
 export class FormInfoBasicComponent {
 
+  minDate: Date;
+
   @Input() infoBasic: FormGroup = new FormGroup({});
 
-  constructor() {}
+  constructor() {
+    this.minDate = new Date();
+  }
 }

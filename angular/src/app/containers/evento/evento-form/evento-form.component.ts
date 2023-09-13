@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-evento-form',
@@ -11,7 +11,9 @@ export class EventoFormComponent {
 
   infoBasic: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private snackBar: MatSnackBar,) {
     this.infoBasic = this.formBuilder.group({
       id: [''],
       endereco: ['', Validators.required],
@@ -24,7 +26,15 @@ export class EventoFormComponent {
   }
 
   onSubmit(){
-    console.log('Dados Fomulário', this.infoBasic)
+    if (this.infoBasic.valid) {
+      console.log('Dados Formulário', this.infoBasic.value);
+    } else {
+      this.invalid();
+    }
+  }
+
+  private invalid(){
+    this.snackBar.open('Preencha todos os campos corretamente', '', {duration: 5000});
   }
 
   Exit(){}

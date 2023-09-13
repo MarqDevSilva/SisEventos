@@ -21,6 +21,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+import { NgxMaskModule } from 'ngx-mask';
 
 import { AppComponent } from './app.component';
 import { ErrorDialogComponent } from './components/dialog/error-dialog/error-dialog.component';
@@ -85,7 +86,8 @@ import { MY_FORMATS } from './util/dataFormat';
         MatDatepickerModule,
         MatNativeDateModule,
         MatSelectModule,
-        CommonModule
+        CommonModule,
+        NgxMaskModule.forRoot()
     ],
     exports:[ ]
 })

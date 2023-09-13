@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatTabGroup } from '@angular/material/tabs';
 import { ActivatedRoute } from '@angular/router';
 import { EventoService } from 'src/app/services/evento/evento.service';
 
@@ -13,6 +14,8 @@ export class EventoEditComponent {
 
   infoBasic: FormGroup;
   payment: FormGroup;
+
+  @ViewChild(MatTabGroup) tabGroup!: MatTabGroup;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -40,7 +43,7 @@ export class EventoEditComponent {
         if (evento) {
           this.infoBasic.patchValue(evento);
         } else {
-            this.snackBar.open('Evento não encontrado', ' ', { duration: 3000 });
+            this.onError('Evento não encontrado');
           }
       });
     }
@@ -49,20 +52,38 @@ export class EventoEditComponent {
   ngOnInit(){
   }
 
-  onSubmit(){
+  submitInfo(){
     if (this.infoBasic.valid) {
-      this.service.edit(this.infoBasic.value).subscribe(result => this.onSuccess(), error => this.onError());
+      this.service.update(this.infoBasic.get('id')?.value,this.infoBasic.value).subscribe(
+        result => this.onSuccess('Evento atualizado com sucesso'),
+        error => this.onError('Erro ao atualizar evento'));
     } else {
       this.invalid();
     }
   }
 
-  private onSuccess(){
-    this.snackBar.open('Evento atualizado com sucesso', '', {duration: 5000});
+  next(){
+    const currentIndex = this.tabGroup.selectedIndex;
+    const tabCount = this.tabGroup._tabs.length;
+    if (currentIndex !== null && currentIndex < tabCount - 1) {
+      this.tabGroup.selectedIndex = currentIndex + 1;
+    }
   }
 
-  private onError(){
-    this.snackBar.open('Erro ao atualizar evento', '', {duration: 5000});
+  previous(){
+    const currentIndex = this.tabGroup.selectedIndex;
+    if (currentIndex !== null && currentIndex > 0) {
+    this.tabGroup.selectedIndex = currentIndex - 1;
+    }
+  }
+
+  private onSuccess(body: string){
+    this.snackBar.open(body, '', {duration: 5000});
+    this.next();
+  }
+
+  private onError(body: string){
+    this.snackBar.open(body, '', {duration: 5000});
   }
 
   private invalid(){

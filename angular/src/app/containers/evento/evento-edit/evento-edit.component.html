@@ -6,14 +6,7 @@
           <mat-icon>info</mat-icon>
           Informações Básicas
         </ng-template>
-        <app-form-info-basic class="form" [infoBasic]="infoBasic" (formSubmitted)="onSubmit()"></app-form-info-basic>
-        <div class="container">
-          <div class="row" id="button">
-            <div class="d-flex justify-content-end">
-              <button mat-raised-button color="primary" (click)="onSubmit()">Salvar</button>
-            </div>
-          </div>
-        </div>
+        <app-form-info-basic class="form" [infoBasic]="infoBasic" (submitted)="submitInfo()"></app-form-info-basic>
       </mat-tab>
 
       <mat-tab>
@@ -21,7 +14,14 @@
           <mat-icon class="example-tab-icon">thumb_up</mat-icon>
           Second
         </ng-template>
-        Content 2
+        <div class="container">
+          <div class="row" id="button">
+            <div class="d-flex justify-content-between">
+              <button mat-stroked-button color="warn" (click)="previous()"> < Anterior</button>
+              <button mat-stroked-button color="primary" (click)="next()">Próximo Passo > </button>
+            </div>
+          </div>
+        </div>
       </mat-tab>
 
       <mat-tab>

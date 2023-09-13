@@ -5,6 +5,7 @@ import { EventoPageComponent } from '../containers/evento/evento-page/evento-pag
 import { ToolbarPrincipalComponent } from '../containers/toolbar/toolbar-principal/toolbar-principal.component';
 import { EventoFormComponent } from '../containers/evento/evento-form/evento-form.component';
 import { EventosComponent } from '../containers/evento/eventos/eventos.component';
+import { EventoEditComponent } from '../containers/evento/evento-edit/evento-edit.component';
 
 
 const routes: Routes = [
@@ -14,7 +15,7 @@ const routes: Routes = [
    children: [
     { path: 'eventos', component: EventosComponent, title: 'Eventos'},
     { path: 'new', component: EventoFormComponent, title: 'Novo Evento'},
-    { path: 'edit/:id', component: EventoFormComponent, title: 'Editar Evento'}
+    { path: 'edit/:id', component: EventoEditComponent, title: 'Editar Evento'}
   ]
 },
 ];

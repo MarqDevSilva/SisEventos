@@ -26,7 +26,7 @@ export class EventoService {
     return this.httpClient.put<Evento>(`${this.API}/${id}`, evento);
   }
 
-  getInfo(): Observable<Evento[]>{
+  list(): Observable<Evento[]>{
     return this.httpClient.get<Evento[]>(this.API).pipe(
     );
   }

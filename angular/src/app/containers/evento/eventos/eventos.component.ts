@@ -16,7 +16,7 @@ export class EventosComponent {
   constructor(
     private service: EventoService,
     private router: Router){
-    this.eventos = this.service.getInfo().pipe();
+    this.eventos = this.service.list().pipe();
   }
 
   onAdd(){

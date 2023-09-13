@@ -39,6 +39,8 @@ import { ToolbarLoginComponent } from './containers/toolbar/toolbar-login/toolba
 import { ToolbarPrincipalComponent } from './containers/toolbar/toolbar-principal/toolbar-principal.component';
 import { AppRoutingModule } from './routes/app-routing.module';
 import { MY_FORMATS } from './util/dataFormat';
+import { EventoEditComponent } from './containers/evento/evento-edit/evento-edit.component';
+import { FormHospComponent } from './components/evento/form-hosp/form-hosp.component';
 
 @NgModule({
     declarations: [
@@ -56,6 +58,8 @@ import { MY_FORMATS } from './util/dataFormat';
         FormPageComponent,
         EventoListComponent,
         EventosComponent,
+        EventoEditComponent,
+        FormHospComponent,
     ],
     providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },

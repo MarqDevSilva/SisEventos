@@ -1,16 +1,21 @@
-<mat-card class="container">
-  <mat-toolbar class="toolbar" color="primary">
-    <span><mat-icon>view_headline</mat-icon>Eventos</span>
-    <button mat-fab extended class="add-evento" (click)="onAdd()">
-      <mat-icon>add_circle_outline</mat-icon>
-      Novo Evento
-    </button>
-  </mat-toolbar>
+<div class="container-fluid" id="container">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <mat-card>
+        <mat-toolbar class="toolbar" color="primary">
+          <span><mat-icon>view_headline</mat-icon>Eventos</span>
+          <button mat-fab extended class="add-evento" (click)="onAdd()">
+            <mat-icon>add_circle_outline</mat-icon>
+            Novo Evento
+          </button>
+        </mat-toolbar>
 
-  <app-evento-list
-  *ngIf="eventos | async as evento" [eventos]="evento"
-  (edit)="onEdit($event)">
-  </app-evento-list>
+        <app-evento-list
+          *ngIf="eventos | async as evento" [eventos]="evento"
+          (edit)="onEdit($event)">
+        </app-evento-list>
 
-</mat-card>
-
+      </mat-card>
+    </div>
+  </div>
+</div>

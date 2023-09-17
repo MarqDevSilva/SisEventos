@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTabGroup } from '@angular/material/tabs';
 import { EventoService } from 'src/app/services/evento/evento.service';
@@ -12,6 +12,7 @@ import { EventoService } from 'src/app/services/evento/evento.service';
 export class EventoFormComponent implements OnInit{
 
   infoBasic: FormGroup;
+  page: FormGroup;
 
   @ViewChild(MatTabGroup) tabGroup!: MatTabGroup;
 
@@ -29,6 +30,11 @@ export class EventoFormComponent implements OnInit{
       maxIncricoes: ['', Validators.required],
       whatsApp: ['', Validators.pattern('')]
     });
+
+    this.page = this.formBuilder.group({
+      tituloEvento: [''],
+      imgCapa: new FormControl()
+    })
   }
 
   ngOnInit(){
@@ -42,6 +48,38 @@ export class EventoFormComponent implements OnInit{
     } else {
       this.invalid();
     }
+  }
+
+  submitPage(){
+    if (this.infoBasic.valid) {
+      this.service.save(this.infoBasic.value).subscribe(
+        result => this.onSuccess('Evento salvo com sucesso'),
+        error => this.onError('Erro ao salvar evento'));
+    } else {
+      this.invalid();
+    }
+  }
+
+  changeIMG(event: any){
+    const file = event.target.files[0];
+    if(file){
+      this.convertByte(file);
+    }
+  }
+
+  convertByte(file: File){
+    const reader = new FileReader();
+    reader.onload = (event: any) => {
+      const img = event.target.result;
+      const imgByte = new Uint8Array(img);
+      const numberArray = Array.from(imgByte);
+      this.setImgForm(numberArray)
+    }
+    reader.readAsArrayBuffer(file);
+  }
+
+  setImgForm(img: number[]){
+    this.page.get('imgCapa')?.setValue(img);
   }
 
   next(){

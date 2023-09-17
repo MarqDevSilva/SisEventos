@@ -6,31 +6,23 @@
           <mat-icon>info</mat-icon>
           Informações Básicas
         </ng-template>
-        <app-form-info-basic class="form" [infoBasic]="infoBasic" (submitted)="submitInfo()"></app-form-info-basic>
+        <app-form-info-basic [infoBasic]="infoBasic" (submitted)="submitInfo()"></app-form-info-basic>
       </mat-tab>
 
       <mat-tab>
         <ng-template mat-tab-label>
-          <mat-icon class="example-tab-icon">thumb_up</mat-icon>
-          Second
+          <mat-icon class="example-tab-icon">dvr</mat-icon>
+          Página do Evento
         </ng-template>
-        <div class="container">
-          <div class="row" id="button">
+        <app-form-page></app-form-page>
+        <div class="container" id="button">
+          <div class="row">
             <div class="d-flex justify-content-between">
               <button mat-stroked-button color="warn" (click)="previous()"> < Anterior</button>
-              <button mat-stroked-button color="primary" (click)="next()">Próximo Passo > </button>
+              <button mat-raised-button color="primary" (click)="next()">Salvar</button>
             </div>
           </div>
         </div>
-      </mat-tab>
-
-      <mat-tab>
-        <ng-template mat-tab-label>
-          <mat-icon class="example-tab-icon">thumb_up</mat-icon>
-          Third
-        </ng-template>
-
-        Content 3
       </mat-tab>
   </mat-tab-group>
   </div>

@@ -1,9 +1,15 @@
 package com.event7.spring.service;
 
-import org.springframework.stereotype.Service;
+import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import com.event7.spring.DTO.EventosDTO;
 import com.event7.spring.model.Capa;
 import com.event7.spring.repository.CapaRepository;
+
+import jakarta.validation.constraints.NotNull;
 
 @Service
 public class CapaService {
@@ -17,4 +23,9 @@ public class CapaService {
     public Capa save(Capa capa){
         return capaRepository.save(capa);
     }
+
+    public Optional<Capa> findByEventoId(@PathVariable @NotNull Long eventoId){
+        return capaRepository.findByEventoId(eventoId);
+    }
+
 }

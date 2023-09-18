@@ -15,8 +15,8 @@ public class Capa {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "userId")
-    private Users user;
+    @JoinColumn(name = "eventoId")
+    private Eventos evento;
 
     @Column(length = 100)
     private String tituloEvento;

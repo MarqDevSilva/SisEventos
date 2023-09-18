@@ -22,7 +22,7 @@ import jakarta.validation.constraints.NotNull;
 
 @Validated
 @RestController
-@RequestMapping("/api/eventos")
+@RequestMapping("/api/evento")
 public class EventosController {
 
     private final EventosService eventosService;
@@ -36,13 +36,6 @@ public class EventosController {
         //Users usuarioLogado = (Users) authentication.getPrincipal();
         //Long userId = usuarioLogado.getId();
         return eventosService.findByUserId();
-    }
-
-    @GetMapping("/{endereco}")
-    public ResponseEntity<EventosDTO> findByEndereco(@PathVariable @NotNull String endereco){
-        return eventosService.findByEndereco(endereco)
-            .map(recordFound -> ResponseEntity.ok().body(recordFound))
-            .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping

@@ -8,7 +8,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 
-public class PaginaEvento {
+public class Capa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

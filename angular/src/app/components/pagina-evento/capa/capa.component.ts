@@ -1,4 +1,4 @@
-import { paginaEvento } from './../../../model/pagina-evento';
+import { capa } from './../../../model/capa';
 import { Component, Input } from '@angular/core';
 import { Evento } from 'src/app/model/evento';
 
@@ -10,5 +10,5 @@ import { Evento } from 'src/app/model/evento';
 export class CapaComponent {
 
   @Input() infoBasic?: Evento;
-  @Input() paginaEvento?: paginaEvento;
+  @Input() capa?: capa;
 }

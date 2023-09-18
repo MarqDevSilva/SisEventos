@@ -10,5 +10,5 @@ public record EventosDTO(
     String endereco,
     String nome,
     Date dataInicial,
-    Date dataFinal,
+    Date dataFinal
 ) {}

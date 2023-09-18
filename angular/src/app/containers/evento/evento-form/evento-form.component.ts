@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTabGroup } from '@angular/material/tabs';
 import { EventoService } from 'src/app/services/evento/evento.service';
-import { PaginaEventoService } from 'src/app/services/pagina-evento/pagina-evento.service';
+import { CapaService } from 'src/app/services/pagina-evento/capa.service';
 
 @Component({
   selector: 'app-evento-form',
@@ -13,7 +13,7 @@ import { PaginaEventoService } from 'src/app/services/pagina-evento/pagina-event
 export class EventoFormComponent implements OnInit{
 
   infoBasic: FormGroup;
-  pageForm: FormGroup;
+  capa: FormGroup;
 
   @ViewChild(MatTabGroup) tabGroup!: MatTabGroup;
 
@@ -21,7 +21,7 @@ export class EventoFormComponent implements OnInit{
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
     private serviceInfoBasic: EventoService,
-    private servicePage: PaginaEventoService) {
+    private serviceCapa: CapaService) {
 
     this.infoBasic = this.formBuilder.group({
       id: [''],
@@ -33,7 +33,7 @@ export class EventoFormComponent implements OnInit{
       whatsApp: ['', Validators.pattern('')]
     });
 
-    this.pageForm = this.formBuilder.group({
+    this.capa = this.formBuilder.group({
       tituloEvento: [''],
       imgCapa: new FormControl()
     })
@@ -53,8 +53,8 @@ export class EventoFormComponent implements OnInit{
   }
 
   submitPage(){
-    if (this.pageForm.valid) {
-      this.servicePage.save(this.pageForm.value).subscribe(
+    if (this.capa.valid) {
+      this.serviceCapa.save(this.capa.value).subscribe(
         result => this.onSuccess('Página salva com sucesso'),
         error => this.onError('Erro ao salvar página'));
     } else {
@@ -66,7 +66,7 @@ export class EventoFormComponent implements OnInit{
     const file = event.target.files[0];
     if(file){
       this.convertByte(file);
-      console.log(this.pageForm)
+      console.log(this.capa)
     }
   }
 
@@ -82,7 +82,7 @@ export class EventoFormComponent implements OnInit{
   }
 
   setImgForm(img: number[]){
-    this.pageForm.get('imgCapa')?.setValue(img);
+    this.capa.get('imgCapa')?.setValue(img);
   }
 
   next(){

@@ -16,7 +16,7 @@ export class FormPageComponent {
   local = false
   background: string = '#FFFFFF'
 
-  @Input() pageForm: FormGroup = new FormGroup({});
+  @Input() capa: FormGroup = new FormGroup({});
   @Output() changeIMG: EventEmitter<void> = new EventEmitter<void>();
 
   constructor() {}

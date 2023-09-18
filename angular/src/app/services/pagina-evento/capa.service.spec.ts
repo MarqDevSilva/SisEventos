@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { PaginaEventoService } from './pagina-evento.service';
+import { CapaService } from './capa.service';
 
-describe('PaginaEventoService', () => {
-  let service: PaginaEventoService;
+describe('CapaService', () => {
+  let service: CapaService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(PaginaEventoService);
+    service = TestBed.inject(CapaService);
   });
 
   it('should be created', () => {

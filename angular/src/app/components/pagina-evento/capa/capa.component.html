@@ -1,0 +1,10 @@
+<div class="container">
+  <div class= "informacoesBasicas" *ngIf="infoBasic">
+    <div class="nomeEvento">
+      <h1>{{ infoBasic.nome }}</h1>
+    </div>
+    <div class="dataEvento">
+      <span>De <strong>{{ infoBasic.dataInicial | date: 'dd, MMMM'}}</strong> a <strong>{{ infoBasic.dataFinal | date: 'dd, MMMM'}}</strong></span>
+    </div>
+  </div>
+</div>

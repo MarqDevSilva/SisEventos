@@ -11,5 +11,4 @@ public record EventosDTO(
     String nome,
     Date dataInicial,
     Date dataFinal,
-    byte[] imgCapa
 ) {}

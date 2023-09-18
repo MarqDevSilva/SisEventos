@@ -41,6 +41,8 @@ import { AppRoutingModule } from './routes/app-routing.module';
 import { MY_FORMATS } from './util/dataFormat';
 import { EventoEditComponent } from './containers/evento/evento-edit/evento-edit.component';
 import { FormHospComponent } from './components/evento/form-hosp/form-hosp.component';
+import { CapaComponent } from './components/pagina-evento/capa/capa.component';
+import { SobreComponent } from './components/pagina-evento/sobre/sobre.component';
 
 @NgModule({
     declarations: [
@@ -60,6 +62,8 @@ import { FormHospComponent } from './components/evento/form-hosp/form-hosp.compo
         EventosComponent,
         EventoEditComponent,
         FormHospComponent,
+        CapaComponent,
+        SobreComponent,
     ],
     providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },

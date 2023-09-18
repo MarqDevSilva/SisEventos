@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { event } from 'jquery';
 
 @Component({
   selector: 'app-form-page',
@@ -15,12 +16,12 @@ export class FormPageComponent {
   local = false
   background: string = '#FFFFFF'
 
-  @Input() infoBasic: FormGroup = new FormGroup({});
-  @Output() submitted: EventEmitter<void> = new EventEmitter<void>();
+  @Input() pageForm: FormGroup = new FormGroup({});
+  @Output() changeIMG: EventEmitter<void> = new EventEmitter<void>();
 
   constructor() {}
 
-  changeIMG(){
-    this.submitted.emit()
+  onChange(event: any){
+    this.changeIMG.emit(event)
   }
 }

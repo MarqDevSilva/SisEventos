@@ -39,7 +39,7 @@ export class EventoEditComponent {
 
     const eventoId = this.route.snapshot.paramMap.get('id');
     if(eventoId){
-      this.service.edit(eventoId).subscribe((evento) => {
+      this.service.getId(eventoId).subscribe((evento) => {
         if (evento) {
           this.infoBasic.patchValue(evento);
         } else {

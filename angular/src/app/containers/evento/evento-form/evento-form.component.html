@@ -14,12 +14,12 @@
           <mat-icon class="example-tab-icon">dvr</mat-icon>
           Página do Evento
         </ng-template>
-        <app-form-page></app-form-page>
+        <app-form-page [pageForm]="pageForm" (changeIMG)="changeIMG($event)"></app-form-page>
         <div class="container" id="button">
           <div class="row">
             <div class="d-flex justify-content-between">
               <button mat-stroked-button color="warn" (click)="previous()"> < Anterior</button>
-              <button mat-raised-button color="primary" (click)="next()">Salvar</button>
+              <button mat-raised-button color="primary" (click)="submitPage()">Salvar</button>
             </div>
           </div>
         </div>

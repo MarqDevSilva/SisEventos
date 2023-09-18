@@ -6,9 +6,6 @@ export interface Evento {
   dataFinal: Date | null;
   maxIncricoes: string | null;
   whatsApp: string | null;
-  tituloEvento: string | null;
-  backgroundColor: string | null;
-  imgCapa: number[];
 }
 
 

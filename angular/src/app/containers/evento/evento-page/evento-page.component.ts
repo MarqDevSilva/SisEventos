@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Evento } from 'src/app/model/evento';
+import { paginaEvento } from 'src/app/model/pagina-evento';
 import { EventoService } from 'src/app/services/evento/evento.service';
+import { PaginaEventoService } from 'src/app/services/pagina-evento/pagina-evento.service';
 
 @Component({
   selector: 'app-evento-page',
@@ -10,16 +12,20 @@ import { EventoService } from 'src/app/services/evento/evento.service';
 })
 export class EventoPageComponent {
 
-  evento?: Evento;
+  infoBasic?: Evento;
+  paginaEvento?: paginaEvento;
 
   constructor(
     private router: ActivatedRoute,
-    private service: EventoService){
+    private serviceBasic: EventoService,
+    private servicePage: PaginaEventoService){
+
     this.getPage();
   }
 
   getPage(){
     const id = this.router.snapshot.paramMap.get("id");
-    this.service.getPage(id).subscribe((evento) => (this.evento = evento));
+    this.serviceBasic.getId(id).subscribe((basic) => (this.infoBasic = basic));
+    this.servicePage.getPage(id).subscribe((page) => (this.paginaEvento = page));
   }
 }

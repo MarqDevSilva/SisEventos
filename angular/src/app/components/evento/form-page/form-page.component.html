@@ -7,14 +7,14 @@
       <p><mat-slide-toggle [(ngModel)]="local">Local</mat-slide-toggle></p>
     </div>
     <div class="col-10">
-      <form>
+      <form [formGroup]="pageForm">
         <mat-card class="mat-card">
           <mat-form-field class="col-12" appearance="outline">
             <mat-label>Título do Evento</mat-label>
             <input matInput formControlName="tituloEvento">
           </mat-form-field>
           <h3>Imagem de Capa</h3>
-          <input type="file">
+          <input type="file" (change)="onChange($event)">
         </mat-card>
 
         <mat-card class="mat-card" *ngIf="sobre">

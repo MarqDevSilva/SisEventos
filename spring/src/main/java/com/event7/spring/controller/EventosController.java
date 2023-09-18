@@ -18,9 +18,7 @@ import com.event7.spring.DTO.EventosDTO;
 import com.event7.spring.DTO.GetEventosDTO;
 import com.event7.spring.service.EventosService;
 
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
 
 @Validated
 @RestController
@@ -43,13 +41,6 @@ public class EventosController {
     @GetMapping("/{endereco}")
     public ResponseEntity<EventosDTO> findByEndereco(@PathVariable @NotNull String endereco){
         return eventosService.findByEndereco(endereco)
-            .map(recordFound -> ResponseEntity.ok().body(recordFound))
-            .orElse(ResponseEntity.notFound().build());
-    }
-
-    @GetMapping("edit/{id}")
-    public ResponseEntity<EventosDTO> findById(@PathVariable @NotNull Long id){
-        return eventosService.findById(id)
             .map(recordFound -> ResponseEntity.ok().body(recordFound))
             .orElse(ResponseEntity.notFound().build());
     }

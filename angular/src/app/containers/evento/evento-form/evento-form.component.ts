@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTabGroup } from '@angular/material/tabs';
 import { EventoService } from 'src/app/services/evento/evento.service';
+import { PaginaEventoService } from 'src/app/services/pagina-evento/pagina-evento.service';
 
 @Component({
   selector: 'app-evento-form',
@@ -12,14 +13,15 @@ import { EventoService } from 'src/app/services/evento/evento.service';
 export class EventoFormComponent implements OnInit{
 
   infoBasic: FormGroup;
-  page: FormGroup;
+  pageForm: FormGroup;
 
   @ViewChild(MatTabGroup) tabGroup!: MatTabGroup;
 
   constructor(
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
-    private service: EventoService,) {
+    private serviceInfoBasic: EventoService,
+    private servicePage: PaginaEventoService) {
 
     this.infoBasic = this.formBuilder.group({
       id: [''],
@@ -31,7 +33,7 @@ export class EventoFormComponent implements OnInit{
       whatsApp: ['', Validators.pattern('')]
     });
 
-    this.page = this.formBuilder.group({
+    this.pageForm = this.formBuilder.group({
       tituloEvento: [''],
       imgCapa: new FormControl()
     })
@@ -42,7 +44,7 @@ export class EventoFormComponent implements OnInit{
 
   submitInfo(){
     if (this.infoBasic.valid) {
-      this.service.save(this.infoBasic.value).subscribe(
+      this.serviceInfoBasic.save(this.infoBasic.value).subscribe(
         result => this.onSuccess('Evento salvo com sucesso'),
         error => this.onError('Erro ao salvar evento'));
     } else {
@@ -51,10 +53,10 @@ export class EventoFormComponent implements OnInit{
   }
 
   submitPage(){
-    if (this.infoBasic.valid) {
-      this.service.save(this.infoBasic.value).subscribe(
-        result => this.onSuccess('Evento salvo com sucesso'),
-        error => this.onError('Erro ao salvar evento'));
+    if (this.pageForm.valid) {
+      this.servicePage.save(this.pageForm.value).subscribe(
+        result => this.onSuccess('Página salva com sucesso'),
+        error => this.onError('Erro ao salvar página'));
     } else {
       this.invalid();
     }
@@ -64,6 +66,7 @@ export class EventoFormComponent implements OnInit{
     const file = event.target.files[0];
     if(file){
       this.convertByte(file);
+      console.log(this.pageForm)
     }
   }
 
@@ -79,7 +82,7 @@ export class EventoFormComponent implements OnInit{
   }
 
   setImgForm(img: number[]){
-    this.page.get('imgCapa')?.setValue(img);
+    this.pageForm.get('imgCapa')?.setValue(img);
   }
 
   next(){

@@ -19,8 +19,7 @@ public class EventosMapper {
             eventos.getEndereco(),
             eventos.getNome(), 
             eventos.getDataInicial(), 
-            eventos.getDataFinal(),
-            eventos.getImgCapa());
+            eventos.getDataFinal());
     }
 
     public Eventos toEntity(EventosDTO eventosDTO){
@@ -37,7 +36,6 @@ public class EventosMapper {
         eventos.setNome(eventosDTO.nome());
         eventos.setDataInicial(eventosDTO.dataInicial());
         eventos.setDataFinal(eventosDTO.dataFinal());
-        eventos.setImgCapa(eventosDTO.imgCapa());
 
         return eventos;
     }

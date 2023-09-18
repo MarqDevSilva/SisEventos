@@ -1,10 +1,4 @@
-<div class="container">
-  <div class= "informacoesBasicas" *ngIf="evento">
-    <div class="nomeEvento">
-      <h1>{{ evento.nome }}</h1>
-    </div>
-    <div class="dataEvento">
-      <span>De <strong>{{ evento.dataInicial | date: 'dd, MMMM'}}</strong> a <strong>{{ evento.dataFinal | date: 'dd, MMMM'}}</strong></span>
-    </div>
-  </div>
-</div>
+<app-capa
+[infoBasic]="infoBasic"
+[paginaEvento]="paginaEvento"
+></app-capa>

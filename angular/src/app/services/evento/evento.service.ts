@@ -9,7 +9,6 @@ import { Evento } from 'src/app/model/evento';
 export class EventoService {
 
   private readonly API = 'api/eventos';
-  private readonly APIedit = 'api/eventos/edit';
 
   constructor(
     private httpClient: HttpClient) {}
@@ -18,8 +17,8 @@ export class EventoService {
     return this.httpClient.post<Evento>(this.API, evento);
   }
 
-  edit(id: string | null): Observable<Evento>{
-    return this.httpClient.get<Evento>(`${this.APIedit}/${id}`)
+  getId(id: string | null): Observable<Evento>{
+    return this.httpClient.get<Evento>(`${this.API}/${id}`)
   }
 
   update(id: string, evento: Partial<Evento>){
@@ -29,9 +28,5 @@ export class EventoService {
   list(): Observable<Evento[]>{
     return this.httpClient.get<Evento[]>(this.API).pipe(
     );
-  }
-
-  getPage(id: string | null): Observable<Evento>{
-    return this.httpClient.get<Evento>(`${this.API}/${id}`)
   }
 }

@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTabGroup } from '@angular/material/tabs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Evento } from 'src/app/model/evento';
 import { EventoService } from 'src/app/services/evento/evento.service';
 import { CapaService } from 'src/app/services/pagina-evento/capa.service';
 
@@ -21,7 +23,9 @@ export class EventoFormComponent implements OnInit{
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
     private serviceInfoBasic: EventoService,
-    private serviceCapa: CapaService) {
+    private serviceCapa: CapaService,
+    private router: Router,
+    private route: ActivatedRoute) {
 
     this.infoBasic = this.formBuilder.group({
       id: [''],
@@ -34,6 +38,9 @@ export class EventoFormComponent implements OnInit{
     });
 
     this.capa = this.formBuilder.group({
+      evento: new FormGroup({
+        id: new FormControl(''),
+      }),
       tituloEvento: [''],
       imgCapa: new FormControl()
     })
@@ -45,7 +52,11 @@ export class EventoFormComponent implements OnInit{
   submitInfo(){
     if (this.infoBasic.valid) {
       this.serviceInfoBasic.save(this.infoBasic.value).subscribe(
-        result => this.onSuccess('Evento salvo com sucesso'),
+        result => {
+          this.onSuccess('Evento salvo com sucesso');
+          this.routerNew(result)
+          this.next()
+        },
         error => this.onError('Erro ao salvar evento'));
     } else {
       this.invalid();
@@ -54,6 +65,8 @@ export class EventoFormComponent implements OnInit{
 
   submitPage(){
     if (this.capa.valid) {
+      this.capa.get('evento.id')?.setValue(this.routerGetId())
+      console.log(this.capa.value)
       this.serviceCapa.save(this.capa.value).subscribe(
         result => this.onSuccess('Página salva com sucesso'),
         error => this.onError('Erro ao salvar página'));
@@ -100,9 +113,17 @@ export class EventoFormComponent implements OnInit{
     }
   }
 
+  routerNew(evento: Evento){
+    this.router.navigate(['new', evento.id])
+  }
+
+  routerGetId(){
+    const eventoId = this.route.snapshot.paramMap.get('id');
+    return eventoId;
+  }
+
   private onSuccess(body: string){
     this.snackBar.open(body, '', {duration: 5000});
-    this.next();
   }
 
   private onError(body: string){

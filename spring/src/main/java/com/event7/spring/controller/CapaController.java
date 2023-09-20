@@ -1,5 +1,6 @@
 package com.event7.spring.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
@@ -29,6 +30,7 @@ public class CapaController {
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     public Capa save(@RequestBody Capa capa){
+        System.out.println(capa);
         return capaService.save(capa);
     }
 
@@ -36,4 +38,10 @@ public class CapaController {
     public Optional<Capa> findByEventoId(@PathVariable @NotNull Long eventoId){
         return capaService.findByEventoId(eventoId);
     }
+
+    @GetMapping
+    public List<Capa> listAll() { 
+        return capaService.listAll();
+    }
+
 }

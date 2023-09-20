@@ -8,7 +8,7 @@ import { Evento } from 'src/app/model/evento';
 })
 export class EventoService {
 
-  private readonly API = 'api/eventos';
+  private readonly API = 'api/evento';
 
   constructor(
     private httpClient: HttpClient) {}

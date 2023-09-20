@@ -1,9 +1,9 @@
 <div class="container">
-  <div class= "informacoesBasicas" *ngIf="infoBasic">
-    <div class="nomeEvento">
-      <h1>{{ infoBasic.nome }}</h1>
+  <div class="row justify-content-center">
+    <div class="titulo" *ngIf="capa">
+      <h1>{{ capa.tituloEvento }}</h1>
     </div>
-    <div class="dataEvento">
+    <div class="data" *ngIf="infoBasic">
       <span>De <strong>{{ infoBasic.dataInicial | date: 'dd, MMMM'}}</strong> a <strong>{{ infoBasic.dataFinal | date: 'dd, MMMM'}}</strong></span>
     </div>
   </div>

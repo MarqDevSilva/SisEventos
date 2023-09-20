@@ -14,7 +14,7 @@ const routes: Routes = [
   {path: '', component: ToolbarPrincipalComponent, title:'Home',
    children: [
     { path: 'eventos', component: EventosComponent, title: 'Eventos'},
-    { path: 'new', component: EventoFormComponent, title: 'Novo Evento'},
+    { path: 'new/:id', component: EventoFormComponent, title: 'Novo Evento'},
     { path: 'edit/:id', component: EventoEditComponent, title: 'Editar Evento'}
   ]
 },

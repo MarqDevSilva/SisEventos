@@ -1,11 +1,11 @@
 package com.event7.spring.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.event7.spring.DTO.EventosDTO;
 import com.event7.spring.model.Capa;
 import com.event7.spring.repository.CapaRepository;
 
@@ -28,4 +28,7 @@ public class CapaService {
         return capaRepository.findByEventoId(eventoId);
     }
 
+    public List<Capa> listAll(){
+        return capaRepository.findAll();
+    }
 }

@@ -12,35 +12,34 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.event7.spring.model.Capa;
-import com.event7.spring.service.CapaService;
+import com.event7.spring.model.Sobre;
+import com.event7.spring.service.SobreService;
 
 import jakarta.validation.constraints.NotNull;
 
 @RestController
-@RequestMapping("/api/capa")
-public class CapaController {
+@RequestMapping("api/sobre")
+public class SobreController {
 
-    private final CapaService capaService;
+    private final SobreService sobreService;
 
-    public CapaController(CapaService capaService){
-        this.capaService = capaService;
+    public SobreController(SobreService sobreService){
+        this.sobreService = sobreService;
     }
     
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Capa save(@RequestBody Capa capa){
-        return capaService.save(capa);
+    public Sobre save(@RequestBody Sobre sobre){
+        return sobreService.save(sobre);
     }
 
     @GetMapping("/{eventoId}")
-    public Optional<Capa> findByEventoId(@PathVariable @NotNull Long eventoId){
-        return capaService.findByEventoId(eventoId);
+    public Optional<Sobre> findByEventoId(@PathVariable @NotNull Long eventoId){
+        return sobreService.findByEventoId(eventoId);
     }
 
     @GetMapping
-    public List<Capa> listAll() { 
-        return capaService.listAll();
+    public List<Sobre> listAll() { 
+        return sobreService.listAll();
     }
-
 }

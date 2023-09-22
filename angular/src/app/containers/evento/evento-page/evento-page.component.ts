@@ -25,7 +25,6 @@ export class EventoPageComponent implements OnInit{
   }
 
   ngOnInit(){
-
   }
 
   getPage(){

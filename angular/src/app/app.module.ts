@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatMomentDateModule, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { MatButtonModule } from '@angular/material/button';
@@ -22,6 +22,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { NgxMaskModule } from 'ngx-mask';
+
 
 import { AppComponent } from './app.component';
 import { ErrorDialogComponent } from './components/dialog/error-dialog/error-dialog.component';
@@ -68,7 +69,8 @@ import { SobreComponent } from './components/pagina-evento/sobre/sobre.component
     providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
     { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
-    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },],
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
+    { provide: LOCALE_ID, useValue: 'pt-BR' }],
     bootstrap: [AppComponent],
     imports: [
         MatMomentDateModule,

@@ -5,7 +5,7 @@
         <p>{{ capa.tituloEvento }}</p>
       </div>
       <div class="data" *ngIf="infoBasic">
-        <span>De <strong>{{ infoBasic.dataInicial | date: 'dd, MMMM'}}</strong> a <strong>{{ infoBasic.dataFinal | date: 'dd, MMMM'}}</strong></span>
+        <span>De <strong>{{ infoBasic.dataInicial | date: "dd 'de' MMMM 'de' yyyy" : '' : 'pt-BR' }}</strong> a <strong>{{ infoBasic.dataFinal | date: "dd 'de' MMMM 'de' yyyy"}}</strong></span>
       </div>
     </div>
   </div>

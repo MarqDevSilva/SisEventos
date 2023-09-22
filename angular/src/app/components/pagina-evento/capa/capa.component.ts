@@ -11,21 +11,11 @@ export class CapaComponent implements OnInit {
 
   @Input() infoBasic?: Evento;
   @Input() capa?: capa;
-
-  bgImg?: string;
+  @Input() bgImg?: string;
 
   constructor(){
-    this.readerImg();
   }
 
   ngOnInit(){
-  }
-
-  readerImg(){
-    if(this.capa?.imgCapa){
-      const binary = String.fromCharCode.apply(null, this.capa?.imgCapa);
-      const base64 = btoa(binary);
-      this.bgImg = 'data:image/png;base64,' + base64;
-    }
   }
 }

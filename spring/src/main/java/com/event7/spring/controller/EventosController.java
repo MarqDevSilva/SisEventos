@@ -1,6 +1,7 @@
 package com.event7.spring.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,6 +37,11 @@ public class EventosController {
         //Users usuarioLogado = (Users) authentication.getPrincipal();
         //Long userId = usuarioLogado.getId();
         return eventosService.findByUserId();
+    }
+
+    @GetMapping("/{id}")
+    public Optional<EventosDTO> getInfo(@PathVariable @NotNull Long id){
+        return eventosService.findById(id);
     }
 
     @PostMapping

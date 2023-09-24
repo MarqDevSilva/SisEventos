@@ -10,18 +10,21 @@ import { event } from 'jquery';
 
 export class FormPageComponent {
 
-  sobre = false
-  palestrantes = false
-  programacao = false
-  local = false
-  background: string = '#FFFFFF'
+  sobreToggle = false
+  palestrantesToggle = false
+  programacaoToggle = false
+  localToggle = false
 
   @Input() capa: FormGroup = new FormGroup({});
+  @Input()  sobre: FormGroup = new FormGroup({});
   @Output() changeIMG: EventEmitter<void> = new EventEmitter<void>();
 
   constructor() {}
 
   onChange(event: any){
     this.changeIMG.emit(event)
+  }
+
+  console(){
   }
 }

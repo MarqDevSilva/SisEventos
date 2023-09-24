@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Sobre } from 'src/app/model/sobre';
 
 @Component({
   selector: 'app-sobre',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class SobreComponent {
 
+  @Input() sobre?: Sobre
 }

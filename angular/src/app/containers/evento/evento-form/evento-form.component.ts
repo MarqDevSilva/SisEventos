@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Evento } from 'src/app/model/evento';
 import { EventoService } from 'src/app/services/evento/evento.service';
 import { CapaService } from 'src/app/services/pagina-evento/capa.service';
+import { SobreService } from 'src/app/services/pagina-evento/sobre.service';
 
 @Component({
   selector: 'app-evento-form',
@@ -16,6 +17,7 @@ export class EventoFormComponent implements OnInit{
 
   infoBasic: FormGroup;
   capa: FormGroup;
+  sobre: FormGroup;
 
   @ViewChild(MatTabGroup) tabGroup!: MatTabGroup;
 
@@ -24,6 +26,7 @@ export class EventoFormComponent implements OnInit{
     private snackBar: MatSnackBar,
     private serviceInfoBasic: EventoService,
     private serviceCapa: CapaService,
+    private serviceSobre: SobreService,
     private router: Router,
     private route: ActivatedRoute) {
 
@@ -43,6 +46,14 @@ export class EventoFormComponent implements OnInit{
       }),
       tituloEvento: [''],
       imgCapa: new FormControl()
+    })
+
+    this.sobre = this.formBuilder.group({
+      evento: new FormGroup({
+        id: new FormControl(''),
+      }),
+      descricao: [''],
+      bgColor: ['']
     })
   }
 
@@ -64,15 +75,31 @@ export class EventoFormComponent implements OnInit{
   }
 
   submitPage(){
+    //this.submitCapa();
+    this.submitSobre()
+  }
+
+  submitCapa(){
     if (this.capa.valid) {
       this.capa.get('evento.id')?.setValue(this.routerGetId())
-      console.log(this.capa.value)
       this.serviceCapa.save(this.capa.value).subscribe(
         result => this.onSuccess('Página salva com sucesso'),
         error => this.onError('Erro ao salvar página'));
     } else {
       this.invalid();
     }
+  }
+
+  submitSobre(){
+    console.log(this.sobre.get('bgColor')?.value)
+    //if(this.sobre.valid){
+      //this.sobre.get('evento.id')?.setValue(this.routerGetId())
+      //this.serviceSobre.save(this.sobre.value).subscribe(
+        //result => this.onSuccess('Salvo'),
+       // error => this.onError('Erro ao salvar descricao'));
+    //} else {
+      //this.invalid();
+   // }
   }
 
   changeIMG(event: any){

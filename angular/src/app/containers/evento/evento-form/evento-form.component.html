@@ -14,7 +14,11 @@
           <mat-icon class="example-tab-icon">dvr</mat-icon>
           Página do Evento
         </ng-template>
-        <app-form-page [capa]="capa" (changeIMG)="changeIMG($event)"></app-form-page>
+        <app-form-page
+         [capa]="capa"
+         [sobre]="sobre"
+         (changeIMG)="changeIMG($event)"
+         ></app-form-page>
         <div class="container" id="button">
           <div class="row">
             <div class="d-flex justify-content-between">

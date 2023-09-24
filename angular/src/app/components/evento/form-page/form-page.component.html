@@ -1,10 +1,10 @@
 <div class="container" id="container">
   <div class="row">
     <div class="col-2" id="menu">
-      <p><mat-slide-toggle [(ngModel)]="sobre">Sobre</mat-slide-toggle></p>
-      <p><mat-slide-toggle [(ngModel)]="palestrantes">Palestrantes</mat-slide-toggle></p>
-      <p><mat-slide-toggle [(ngModel)]="programacao">Programação</mat-slide-toggle></p>
-      <p><mat-slide-toggle [(ngModel)]="local">Local</mat-slide-toggle></p>
+      <p><mat-slide-toggle [(ngModel)]="sobreToggle">Sobre</mat-slide-toggle></p>
+      <p><mat-slide-toggle [(ngModel)]="palestrantesToggle">Palestrantes</mat-slide-toggle></p>
+      <p><mat-slide-toggle [(ngModel)]="programacaoToggle">Programação</mat-slide-toggle></p>
+      <p><mat-slide-toggle [(ngModel)]="localToggle">Local</mat-slide-toggle></p>
     </div>
     <div class="col-10">
       <form [formGroup]="capa">
@@ -16,29 +16,34 @@
           <h3>Imagem de Capa</h3>
           <input type="file" (change)="onChange($event)">
         </mat-card>
+      </form>
 
-        <mat-card class="mat-card" *ngIf="sobre">
+      <form [formGroup]="sobre">
+        <mat-card class="mat-card" *ngIf="sobreToggle">
+          <div class="menu-sobre">
+            <input type="color" matInput formControlName="bgColor">
+          </div>
+          <mat-form-field class="col-12" appearance="outline">
+            <mat-label>Sobre</mat-label>
+            <textarea matInput formControlName="descricao" [style.background-color]="sobre.get('bgColor')?.value"></textarea>
+          </mat-form-field>
+        </mat-card>
+
+         <mat-card class="mat-card" *ngIf="palestrantesToggle">
           <mat-form-field class="col-12" appearance="outline">
             <mat-label>Sobre</mat-label>
             <textarea matInput></textarea>
           </mat-form-field>
         </mat-card>
 
-         <mat-card class="mat-card" *ngIf="palestrantes">
+        <mat-card class="mat-card" *ngIf="programacaoToggle">
           <mat-form-field class="col-12" appearance="outline">
             <mat-label>Sobre</mat-label>
             <textarea matInput></textarea>
           </mat-form-field>
         </mat-card>
 
-        <mat-card class="mat-card" *ngIf="programacao">
-          <mat-form-field class="col-12" appearance="outline">
-            <mat-label>Sobre</mat-label>
-            <textarea matInput></textarea>
-          </mat-form-field>
-        </mat-card>
-
-        <mat-card class="mat-card" *ngIf="local">
+        <mat-card class="mat-card" *ngIf="localToggle">
           <mat-form-field class="col-12" appearance="outline">
             <mat-label>Sobre</mat-label>
             <textarea matInput></textarea>

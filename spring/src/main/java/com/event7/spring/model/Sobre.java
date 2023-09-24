@@ -23,4 +23,7 @@ public class Sobre {
 
     @Column()
     private String descricao;
+
+    @Column()
+    private String bgColor;
 }

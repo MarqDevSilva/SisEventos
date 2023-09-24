@@ -1,5 +1,8 @@
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="sobre">
   <div class="row text-center">
     <p class="titulo">SOBRE</p>
+  </div>
+  <div class="row">
+    {{ sobre.descricao }}
   </div>
 </div>

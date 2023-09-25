@@ -22,7 +22,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { NgxMaskModule } from 'ngx-mask';
-
+import { QuillModule } from 'ngx-quill';
 
 import { AppComponent } from './app.component';
 import { ErrorDialogComponent } from './components/dialog/error-dialog/error-dialog.component';
@@ -73,6 +73,7 @@ import { SobreComponent } from './components/pagina-evento/sobre/sobre.component
     { provide: LOCALE_ID, useValue: 'pt-BR' }],
     bootstrap: [AppComponent],
     imports: [
+        QuillModule.forRoot(),
         MatMomentDateModule,
         MatExpansionModule,
         MatSlideToggleModule,

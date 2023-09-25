@@ -70,10 +70,10 @@ registerLocaleData(localePt);
         SobreComponent,
     ],
     providers: [
-    { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
+    { provide: MAT_DATE_LOCALE, useValue: 'pt' },
     { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
-    { provide: LOCALE_ID, useValue: 'pt-BR' }],
+    { provide: LOCALE_ID, useValue: 'pt' }],
     bootstrap: [AppComponent],
     imports: [
         QuillModule.forRoot(),

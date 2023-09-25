@@ -1,5 +1,6 @@
 package com.event7.spring.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
@@ -33,7 +34,7 @@ public class PalestranteController {
     }
 
     @GetMapping("/{eventoId}")
-    public Optional<Palestrantes> findeByEventoId(@PathVariable @NotNull Long eventoId){
+    public List<Palestrantes> findeByEventoId(@PathVariable @NotNull Long eventoId){
         return palestranteService.findByEventoId(eventoId);
     }
 }

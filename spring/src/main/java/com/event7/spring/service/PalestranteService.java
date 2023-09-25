@@ -1,5 +1,6 @@
 package com.event7.spring.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -23,7 +24,7 @@ public class PalestranteService {
         return palestranteRepository.save(palestrantes);
     }
 
-    public Optional<Palestrantes> findByEventoId(@PathVariable @NotNull Long eventoId){
+    public List<Palestrantes> findByEventoId(@PathVariable @NotNull Long eventoId){
         return palestranteRepository.findByEventoId(eventoId);
     }
 }

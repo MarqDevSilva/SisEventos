@@ -31,7 +31,7 @@
         </mat-card>
       </form>
 
-      <form>
+      <form [formGroup]="palestrante">
         <mat-card class="container card" *ngIf="palestrantesToggle">
           <mat-card-title>Palestrantes</mat-card-title>
           <div class="row">
@@ -50,6 +50,11 @@
               <input type="file" (change)="onFileSelected($event)">
             </div>
           </div>
+          <mat-card-actions class="justify-content-center">
+            <button mat-mini-fab color="primary">
+              <mat-icon>add</mat-icon>
+            </button>
+          </mat-card-actions>
         </mat-card>
       </form>
 

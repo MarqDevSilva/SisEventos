@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTabGroup } from '@angular/material/tabs';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -18,6 +18,8 @@ export class EventoFormComponent implements OnInit{
   infoBasic: FormGroup;
   capa: FormGroup;
   sobre: FormGroup;
+  palestrante: FormGroup;
+  palestrantes: FormArray;
 
   @ViewChild(MatTabGroup) tabGroup!: MatTabGroup;
 
@@ -46,7 +48,7 @@ export class EventoFormComponent implements OnInit{
       }),
       tituloEvento: [''],
       imgCapa: new FormControl()
-    })
+    });
 
     this.sobre = this.formBuilder.group({
       evento: new FormGroup({
@@ -54,7 +56,21 @@ export class EventoFormComponent implements OnInit{
       }),
       descricao: [''],
       bgColor: ['']
+    });
+
+    this.palestrante = this.formBuilder.group({
+      evento: new FormGroup({
+        id: new FormControl(''),
+      }),
+      nome: [''],
+      descricao: [''],
+      img: new FormControl()
     })
+
+    this.palestrantes = this.formBuilder.array([
+      this.palestrante
+    ])
+
   }
 
   ngOnInit(){

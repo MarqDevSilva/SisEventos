@@ -77,6 +77,11 @@ export class EventoFormComponent implements OnInit{
   submitPage(){
     this.submitCapa();
     this.submitSobre()
+    this.console();
+  }
+
+  console(){
+    console.log(this.sobre.get('descricao')?.value)
   }
 
   submitCapa(){

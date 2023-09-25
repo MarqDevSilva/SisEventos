@@ -1,8 +1,9 @@
-<div class="container-fluid" *ngIf="sobre">
+<div class="container-fluid" *ngIf="sobre" [style.background-color]="sobre.bgColor">
   <div class="row text-center">
     <p class="titulo">SOBRE</p>
   </div>
-  <div class="row">
-    {{ sobre.descricao }}
+  <div class="container">
+    <div class="row ql-editor" [innerHTML]="sobre.descricao ? sanitizeHtml(sobre.descricao) : ''"></div>
   </div>
 </div>
+

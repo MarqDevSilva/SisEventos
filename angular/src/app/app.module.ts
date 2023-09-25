@@ -1,5 +1,6 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import localePt from '@angular/common/locales/pt';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatMomentDateModule, MomentDateAdapter } from '@angular/material-moment-adapter';
@@ -27,12 +28,16 @@ import { QuillModule } from 'ngx-quill';
 import { AppComponent } from './app.component';
 import { ErrorDialogComponent } from './components/dialog/error-dialog/error-dialog.component';
 import { EventoListComponent } from './components/evento/evento-list/evento-list.component';
+import { FormHospComponent } from './components/evento/form-hosp/form-hosp.component';
 import { FormInfoBasicComponent } from './components/evento/form-info-basic/form-info-basic.component';
 import { FormPageComponent } from './components/evento/form-page/form-page.component';
 import { FormPayComponent } from './components/evento/form-pay/form-pay.component';
+import { CapaComponent } from './components/pagina-evento/capa/capa.component';
+import { SobreComponent } from './components/pagina-evento/sobre/sobre.component';
 import { AccountUserComponent } from './components/user/account-user/account-user.component';
 import { NewUserComponent } from './components/user/new-user/new-user.component';
 import { EventosComponent } from './containers//evento/eventos/eventos.component';
+import { EventoEditComponent } from './containers/evento/evento-edit/evento-edit.component';
 import { EventoFormComponent } from './containers/evento/evento-form/evento-form.component';
 import { EventoPageComponent } from './containers/evento/evento-page/evento-page.component';
 import { ToolbarIndexComponent } from './containers/toolbar/toolbar-index/toolbar-index.component';
@@ -40,10 +45,8 @@ import { ToolbarLoginComponent } from './containers/toolbar/toolbar-login/toolba
 import { ToolbarPrincipalComponent } from './containers/toolbar/toolbar-principal/toolbar-principal.component';
 import { AppRoutingModule } from './routes/app-routing.module';
 import { MY_FORMATS } from './util/dataFormat';
-import { EventoEditComponent } from './containers/evento/evento-edit/evento-edit.component';
-import { FormHospComponent } from './components/evento/form-hosp/form-hosp.component';
-import { CapaComponent } from './components/pagina-evento/capa/capa.component';
-import { SobreComponent } from './components/pagina-evento/sobre/sobre.component';
+
+registerLocaleData(localePt);
 
 @NgModule({
     declarations: [

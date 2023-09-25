@@ -27,8 +27,4 @@ public class CapaService {
     public Optional<Capa> findByEventoId(@PathVariable @NotNull Long eventoId){
         return capaRepository.findByEventoId(eventoId);
     }
-
-    public List<Capa> listAll(){
-        return capaRepository.findAll();
-    }
 }

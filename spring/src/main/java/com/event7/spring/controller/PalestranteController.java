@@ -1,7 +1,6 @@
 package com.event7.spring.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +17,7 @@ import com.event7.spring.service.PalestranteService;
 import jakarta.validation.constraints.NotNull;
 
 @RestController
-@RequestMapping("/api/palestrante")
+@RequestMapping("/api/palestrantes")
 public class PalestranteController {
     
     private final PalestranteService palestranteService;

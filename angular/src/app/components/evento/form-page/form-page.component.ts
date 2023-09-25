@@ -24,4 +24,25 @@ export class FormPageComponent {
   onChange(event: any){
     this.changeIMG.emit(event)
   }
+
+  selectedFile: File | null = null;
+  selectedFileUrl: string | null = null;
+
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      this.selectedFile = file;
+      this.displaySelectedImage();
+    }
+  }
+
+  displaySelectedImage() {
+    if (this.selectedFile) {
+      const reader = new FileReader();
+      reader.onload = (event: any) => {
+        this.selectedFileUrl = event.target.result;
+      };
+      reader.readAsDataURL(this.selectedFile);
+    }
+  }
 }

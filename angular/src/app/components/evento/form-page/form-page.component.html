@@ -20,7 +20,7 @@
 
       <form [formGroup]="sobre">
         <mat-card class="container card" *ngIf="sobreToggle">
-          <mat-card-title>Sobre</mat-card-title>
+          <mat-card-title class="card-title">Sobre</mat-card-title>
           <div id="container">
             Cor de fundo:
           </div>
@@ -34,10 +34,22 @@
       <form>
         <mat-card class="container card" *ngIf="palestrantesToggle">
           <mat-card-title>Palestrantes</mat-card-title>
-          <mat-form-field class="example-full-width">
-            <mat-label>First name</mat-label>
-            <input matInput>
-          </mat-form-field>
+          <div class="row">
+            <div class="col-6">
+              <mat-form-field class="col-12" appearance="outline">
+                <mat-label>Nome</mat-label>
+                <input matInput>
+              </mat-form-field>
+              <mat-form-field class="col-12" appearance="outline">
+                <mat-label>Descrição</mat-label>
+                <textarea matInput></textarea>
+              </mat-form-field>
+            </div>
+            <div class="col-6">
+              <div class="image-preview" [style.background-image]="'url(' + selectedFileUrl + ')'"></div>
+              <input type="file" (change)="onFileSelected($event)">
+            </div>
+          </div>
         </mat-card>
       </form>
 

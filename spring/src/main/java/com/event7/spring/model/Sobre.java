@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
@@ -21,7 +22,8 @@ public class Sobre {
     @JoinColumn(name = "eventoId")
     private Eventos evento;
 
-    @Column()
+    @Lob
+    @Column(name = "descricao")
     private String descricao;
 
     @Column()

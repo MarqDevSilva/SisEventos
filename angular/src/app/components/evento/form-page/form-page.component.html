@@ -19,20 +19,15 @@
       </form>
 
       <form [formGroup]="sobre">
-        <mat-card class="container" *ngIf="sobreToggle">
-          <div>
-            <mat-label>Cor de fundo</mat-label>
+        <mat-card class="container" id="container" *ngIf="sobreToggle">
+          <mat-card-title>Sobre</mat-card-title>
+          <div id="container">
+            Cor de fundo:
           </div>
           <div>
             <input type="color" matInput formControlName="bgColor">
           </div>
-          <mat-form-field class="col-12" appearance="outline">
-            <mat-label>Sobre</mat-label>
-            <quill-editor
-            [styles]="{ 'background-color': sobre.get('bgColor')?.value }"
-            formControlName="descricao"
-          ></quill-editor>
-          </mat-form-field>
+          <quill-editor formControlName="descricao" [style.background-color]="sobre.get('bgColor')?.value"></quill-editor>
         </mat-card>
 
          <mat-card class="mat-card" *ngIf="palestrantesToggle">

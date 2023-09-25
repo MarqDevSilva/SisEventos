@@ -24,7 +24,4 @@ export class FormPageComponent {
   onChange(event: any){
     this.changeIMG.emit(event)
   }
-
-  console(){
-  }
 }

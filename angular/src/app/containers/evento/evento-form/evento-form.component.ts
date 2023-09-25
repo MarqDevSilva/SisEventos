@@ -75,7 +75,7 @@ export class EventoFormComponent implements OnInit{
   }
 
   submitPage(){
-    //this.submitCapa();
+    this.submitCapa();
     this.submitSobre()
   }
 
@@ -91,15 +91,14 @@ export class EventoFormComponent implements OnInit{
   }
 
   submitSobre(){
-    console.log(this.sobre.get('bgColor')?.value)
-    //if(this.sobre.valid){
-      //this.sobre.get('evento.id')?.setValue(this.routerGetId())
-      //this.serviceSobre.save(this.sobre.value).subscribe(
-        //result => this.onSuccess('Salvo'),
-       // error => this.onError('Erro ao salvar descricao'));
-    //} else {
-      //this.invalid();
-   // }
+    if(this.sobre.valid){
+      this.sobre.get('evento.id')?.setValue(this.routerGetId())
+      this.serviceSobre.save(this.sobre.value).subscribe(
+        result => this.onSuccess('Salvo'),
+        error => this.onError('Erro ao salvar descricao'));
+    } else {
+      this.invalid();
+    }
   }
 
   changeIMG(event: any){

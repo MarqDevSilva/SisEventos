@@ -1,6 +1,5 @@
 package com.event7.spring.controller;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
@@ -12,29 +11,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.event7.spring.model.Capa;
-import com.event7.spring.service.CapaService;
+import com.event7.spring.model.Palestrantes;
+import com.event7.spring.service.PalestranteService;
 
 import jakarta.validation.constraints.NotNull;
 
 @RestController
-@RequestMapping("/api/capa")
-public class CapaController {
-
-    private final CapaService capaService;
-
-    public CapaController(CapaService capaService){
-        this.capaService = capaService;
-    }
+@RequestMapping("/api/palestrante")
+public class PalestranteController {
     
+    private final PalestranteService palestranteService;
+
+    public PalestranteController(PalestranteService palestranteService){
+        this.palestranteService = palestranteService;
+    }
+
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Capa save(@RequestBody Capa capa){
-        return capaService.save(capa);
+    public Palestrantes save(@RequestBody Palestrantes palestrantes){
+        return palestranteService.save(palestrantes);
     }
 
     @GetMapping("/{eventoId}")
-    public Optional<Capa> findByEventoId(@PathVariable @NotNull Long eventoId){
-        return capaService.findByEventoId(eventoId);
+    public Optional<Palestrantes> findeByEventoId(@PathVariable @NotNull Long eventoId){
+        return palestranteService.findByEventoId(eventoId);
     }
 }

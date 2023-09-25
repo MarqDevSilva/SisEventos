@@ -8,7 +8,7 @@
     </div>
     <div class="col-10">
       <form [formGroup]="capa">
-        <mat-card class="mat-card">
+        <mat-card class="container card">
           <mat-form-field class="col-12" appearance="outline">
             <mat-label>Título do Evento</mat-label>
             <input matInput formControlName="tituloEvento">
@@ -19,7 +19,7 @@
       </form>
 
       <form [formGroup]="sobre">
-        <mat-card class="container" id="container" *ngIf="sobreToggle">
+        <mat-card class="container card" *ngIf="sobreToggle">
           <mat-card-title>Sobre</mat-card-title>
           <div id="container">
             Cor de fundo:
@@ -29,13 +29,17 @@
           </div>
           <quill-editor formControlName="descricao" [style.background-color]="sobre.get('bgColor')?.value"></quill-editor>
         </mat-card>
+      </form>
 
-         <mat-card class="mat-card" *ngIf="palestrantesToggle">
-          <mat-form-field class="col-12" appearance="outline">
-            <mat-label>Sobre</mat-label>
-            <textarea matInput></textarea>
+      <form>
+        <mat-card class="container card" *ngIf="palestrantesToggle">
+          <mat-card-title>Palestrantes</mat-card-title>
+          <mat-form-field class="example-full-width">
+            <mat-label>First name</mat-label>
+            <input matInput>
           </mat-form-field>
         </mat-card>
+      </form>
 
         <mat-card class="mat-card" *ngIf="programacaoToggle">
           <mat-form-field class="col-12" appearance="outline">
@@ -50,7 +54,6 @@
             <textarea matInput></textarea>
           </mat-form-field>
         </mat-card>
-      </form>
     </div>
   </div>
 </div>

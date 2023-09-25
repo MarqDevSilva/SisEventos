@@ -28,7 +28,7 @@ public class PalestranteController {
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Palestrantes save(@RequestBody Palestrantes palestrantes){
+    public List<Palestrantes> save(@RequestBody List<Palestrantes> palestrantes){
         return palestranteService.save(palestrantes);
     }
 

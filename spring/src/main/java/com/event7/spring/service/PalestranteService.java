@@ -1,5 +1,6 @@
 package com.event7.spring.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,8 +21,13 @@ public class PalestranteService {
         this.palestranteRepository = palestranteRepository;
     }
 
-    public Palestrantes save(Palestrantes palestrantes){
-        return palestranteRepository.save(palestrantes);
+    public List<Palestrantes> save(List<Palestrantes> palestrantes){
+        List<Palestrantes> savedPalestrantes = new ArrayList<>();
+        for (Palestrantes palestrante : palestrantes) {
+            Palestrantes savedPalestrante = palestranteRepository.save(palestrante);
+            savedPalestrantes.add(savedPalestrante);
+        }
+        return savedPalestrantes;
     }
 
     public List<Palestrantes> findByEventoId(@PathVariable @NotNull Long eventoId){

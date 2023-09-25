@@ -45,6 +45,7 @@ import { ToolbarLoginComponent } from './containers/toolbar/toolbar-login/toolba
 import { ToolbarPrincipalComponent } from './containers/toolbar/toolbar-principal/toolbar-principal.component';
 import { AppRoutingModule } from './routes/app-routing.module';
 import { MY_FORMATS } from './util/dataFormat';
+import { PalestrantesComponent } from './components/pagina-evento/palestrantes/palestrantes.component';
 
 registerLocaleData(localePt);
 
@@ -68,6 +69,7 @@ registerLocaleData(localePt);
         FormHospComponent,
         CapaComponent,
         SobreComponent,
+        PalestrantesComponent,
     ],
     providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'pt' },

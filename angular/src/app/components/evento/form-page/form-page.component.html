@@ -31,11 +31,11 @@
         </mat-card>
       </form>
 
-      <form [formGroup]="palestrante">
+      <form>
         <mat-card class="container card" *ngIf="palestrantesToggle">
           <mat-card-title>Palestrantes</mat-card-title>
-          <div class="row">
-            <div class="col-6">
+          <div class="row" *ngFor="let palestrante of palestrantes; let i = index">
+            <div class="col-5">
               <mat-form-field class="col-12" appearance="outline">
                 <mat-label>Nome</mat-label>
                 <input matInput>
@@ -49,9 +49,14 @@
               <div class="image-preview" [style.background-image]="'url(' + selectedFileUrl + ')'"></div>
               <input type="file" (change)="onFileSelected($event)">
             </div>
+            <div class="col-1">
+              <button mat-mini-fab color="warn" (click)="onAdd()">
+                <mat-icon>add</mat-icon>
+              </button>
+            </div>
           </div>
           <mat-card-actions class="justify-content-center">
-            <button mat-mini-fab color="primary">
+            <button mat-mini-fab color="primary" (click)="onAdd()">
               <mat-icon>add</mat-icon>
             </button>
           </mat-card-actions>

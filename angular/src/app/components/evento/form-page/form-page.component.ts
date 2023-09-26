@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormArray, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { event } from 'jquery';
 
 @Component({
@@ -20,15 +20,15 @@ export class FormPageComponent {
 
   @Input() capa: FormGroup = new FormGroup({});
   @Input() sobre: FormGroup = new FormGroup({});
-  @Input() palestrantes: FormArray = new FormArray<FormGroup>([]);
-  @Input() palestrante: FormGroup = new FormGroup({});
+
+  palestrantes: any[] = [];
 
   @Output() changeIMG: EventEmitter<void> = new EventEmitter<void>();
 
   constructor() {}
 
   onAdd(){
-    this.palestrantes.push(this.palestrante)
+    this.palestrantes.push({ nome: '', descricao: '' });
   }
 
   onChange(event: any){

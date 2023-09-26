@@ -1,6 +1,5 @@
 package com.event7.spring.controller;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
@@ -37,4 +36,5 @@ public class CapaController {
     public Optional<Capa> findByEventoId(@PathVariable @NotNull Long eventoId){
         return capaService.findByEventoId(eventoId);
     }
+        
 }

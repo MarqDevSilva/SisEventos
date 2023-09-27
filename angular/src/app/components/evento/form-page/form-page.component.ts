@@ -31,6 +31,12 @@ export class FormPageComponent {
     this.palestrantes.push({ nome: '', descricao: '' });
   }
 
+  onDelete(index: number) {
+    if (index >= 0 && index < this.palestrantes.length) {
+      this.palestrantes.splice(index, 1);
+    }
+  }
+
   onChange(event: any){
     this.changeIMG.emit(event)
   }

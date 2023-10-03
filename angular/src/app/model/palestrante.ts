@@ -1,4 +1,4 @@
-export interface capa{
+export interface Palestrante{
   evento:{
     id: string | null
   }

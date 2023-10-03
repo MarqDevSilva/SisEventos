@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
-import { event } from 'jquery';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-form-page',
@@ -18,14 +17,14 @@ export class FormPageComponent {
   selectedFile: File | null = null;
   selectedFileUrl: string | null = null;
 
-  @Input() capa: FormGroup = new FormGroup({});
-  @Input() sobre: FormGroup = new FormGroup({});
-
   palestrantes: any[] = [];
 
+  @Input() capa: FormGroup = new FormGroup({});
+  @Input() sobre: FormGroup = new FormGroup({});
   @Output() changeIMG: EventEmitter<void> = new EventEmitter<void>();
 
-  constructor() {}
+  constructor() {
+  }
 
   onAdd(){
     this.palestrantes.push({ nome: '', descricao: '' });
@@ -41,21 +40,21 @@ export class FormPageComponent {
     this.changeIMG.emit(event)
   }
 
-  onFileSelected(event: any) {
+  onFileSelected(event: any, index: number) {
     const file: File = event.target.files[0];
     if (file) {
-      this.selectedFile = file;
-      this.displaySelectedImage();
+      this.palestrantes[index].selectedFile = file;
+      this.displaySelectedImage(index);
     }
   }
 
-  displaySelectedImage() {
-    if (this.selectedFile) {
+  displaySelectedImage(index: number) {
+    if (this.palestrantes[index].selectedFile) {
       const reader = new FileReader();
       reader.onload = (event: any) => {
-        this.selectedFileUrl = event.target.result;
+        this.palestrantes[index].selectedFileUrl = event.target.result;
       };
-      reader.readAsDataURL(this.selectedFile);
+      reader.readAsDataURL(this.palestrantes[index].selectedFile);
     }
   }
 }

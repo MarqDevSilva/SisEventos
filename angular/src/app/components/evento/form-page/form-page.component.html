@@ -46,8 +46,8 @@
               </mat-form-field>
             </div>
             <div class="col-6">
-              <div class="image-preview" [style.background-image]="'url(' + selectedFileUrl + ')'"></div>
-              <input type="file" (change)="onFileSelected($event)">
+              <div class="image-preview" [style.background-image]="'url(' + palestrante.selectedFileUrl + ')'"></div>
+              <input type="file" (change)="onFileSelected($event, i)">
             </div>
             <div class="col-1">
               <button mat-mini-fab color="warn" (click)="onDelete(i)">

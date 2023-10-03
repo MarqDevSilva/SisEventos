@@ -7,75 +7,77 @@
       <p><mat-slide-toggle [(ngModel)]="localToggle">Local</mat-slide-toggle></p>
     </div>
     <div class="col-10">
-      <form [formGroup]="capa">
-        <mat-card class="container card">
-          <mat-form-field class="col-12" appearance="outline">
-            <mat-label>Título do Evento</mat-label>
-            <input matInput formControlName="tituloEvento">
-          </mat-form-field>
-          <h3>Imagem de Capa</h3>
-          <input type="file" (change)="onChange($event)">
-        </mat-card>
-      </form>
+      <form [formGroup]="eventPage">
+        <div formGroupName="capa">
+          <mat-card class="container card">
+            <mat-form-field class="col-12" appearance="outline">
+              <mat-label>Título do Evento</mat-label>
+              <input matInput formControlName="tituloEvento">
+            </mat-form-field>
+            <h3>Imagem de Capa</h3>
+            <input type="file" (change)="onChange($event)">
+          </mat-card>
+        </div>
 
-      <form [formGroup]="sobre">
-        <mat-card class="container card" *ngIf="sobreToggle">
-          <mat-card-title class="card-title">Sobre</mat-card-title>
-          <div id="container">
-            Cor de fundo:
-          </div>
-          <div>
-            <input type="color" matInput formControlName="bgColor">
-          </div>
-          <quill-editor formControlName="descricao" [style.background-color]="sobre.get('bgColor')?.value"></quill-editor>
-        </mat-card>
-      </form>
+        <div formGroupName="sobre">
+          <mat-card class="container card" *ngIf="sobreToggle">
+            <mat-card-title class="card-title">Sobre</mat-card-title>
+            <div id="container">
+              Cor de fundo:
+            </div>
+            <div>
+              <input type="color" matInput formControlName="bgColor">
+            </div>
+            <quill-editor formControlName="descricao" [style.background-color]="eventPage.get('sobre.bgColor')?.value"></quill-editor>
+          </mat-card>
+        </div>
 
-      <form>
-        <mat-card class="container card" *ngIf="palestrantesToggle">
-          <mat-card-title>Palestrantes</mat-card-title>
-          <div class="row" *ngFor="let palestrante of palestrantes; let i = index">
-            <div class="col-5">
-              <mat-form-field class="col-12" appearance="outline">
-                <mat-label>Nome</mat-label>
-                <input matInput>
-              </mat-form-field>
-              <mat-form-field class="col-12" appearance="outline">
-                <mat-label>Descrição</mat-label>
-                <textarea matInput></textarea>
-              </mat-form-field>
+        <div formGroupName="palestrantes">
+          <mat-card class="container card" *ngIf="palestrantesToggle">
+            <mat-card-title>Palestrantes</mat-card-title>
+            <div class="row" *ngFor="let palestrante of palestrantes.controls; let i = index" [formGroupName]="i">
+              <div class="col-5">
+                <mat-form-field class="col-12" appearance="outline">
+                  <mat-label>Nome</mat-label>
+                  <input matInput formControlName="nome">
+                </mat-form-field>
+                <mat-form-field class="col-12" appearance="outline">
+                  <mat-label>Descrição</mat-label>
+                  <textarea matInput formControlName="descricao"></textarea>
+                </mat-form-field>
+              </div>
+              <div class="col-6">
+                <div class="image-preview" [style.background-image]="'url(' + palestrante.get('selectedFileUrl')?.value + ')'"></div>
+                <input type="file" (change)="onFileSelected($event, i)">
+              </div>
+              <div class="col-1">
+                <button mat-mini-fab color="warn" (click)="onDelete(i)">
+                  <mat-icon>delete_forever</mat-icon>
+                </button>
+              </div>
             </div>
-            <div class="col-6">
-              <div class="image-preview" [style.background-image]="'url(' + palestrante.selectedFileUrl + ')'"></div>
-              <input type="file" (change)="onFileSelected($event, i)">
-            </div>
-            <div class="col-1">
-              <button mat-mini-fab color="warn" (click)="onDelete(i)">
-                <mat-icon>delete_forever</mat-icon>
+            <mat-card-actions class="justify-content-center">
+              <button mat-mini-fab color="primary" (click)="onAdd()">
+                <mat-icon>add</mat-icon>
               </button>
-            </div>
-          </div>
-          <mat-card-actions class="justify-content-center">
-            <button mat-mini-fab color="primary" (click)="onAdd()">
-              <mat-icon>add</mat-icon>
-            </button>
-          </mat-card-actions>
-        </mat-card>
+            </mat-card-actions>
+          </mat-card>
+        </div>
       </form>
 
-        <mat-card class="mat-card" *ngIf="programacaoToggle">
-          <mat-form-field class="col-12" appearance="outline">
-            <mat-label>Sobre</mat-label>
-            <textarea matInput></textarea>
-          </mat-form-field>
-        </mat-card>
+      <mat-card class="mat-card" *ngIf="programacaoToggle">
+        <mat-form-field class="col-12" appearance="outline">
+          <mat-label>Sobre</mat-label>
+          <textarea matInput></textarea>
+        </mat-form-field>
+      </mat-card>
 
-        <mat-card class="mat-card" *ngIf="localToggle">
-          <mat-form-field class="col-12" appearance="outline">
-            <mat-label>Sobre</mat-label>
-            <textarea matInput></textarea>
-          </mat-form-field>
-        </mat-card>
+      <mat-card class="mat-card" *ngIf="localToggle">
+        <mat-form-field class="col-12" appearance="outline">
+          <mat-label>Sobre</mat-label>
+          <textarea matInput></textarea>
+        </mat-form-field>
+      </mat-card>
     </div>
   </div>
 </div>

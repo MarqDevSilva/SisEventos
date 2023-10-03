@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-form-page',
@@ -17,23 +17,30 @@ export class FormPageComponent {
   selectedFile: File | null = null;
   selectedFileUrl: string | null = null;
 
-  palestrantes: any[] = [];
+  palestrantes: FormArray;
 
-  @Input() capa: FormGroup = new FormGroup({});
-  @Input() sobre: FormGroup = new FormGroup({});
+  @Input() eventPage: FormGroup = new FormGroup({});
   @Output() changeIMG: EventEmitter<void> = new EventEmitter<void>();
 
-  constructor() {
+  constructor(private formBuilder: FormBuilder) {
+    this.palestrantes = this.formBuilder.array([])
+  }
+
+  create(){
+    return new FormGroup({
+      nome: new FormControl(''),
+      descricao: new FormControl(''),
+      selectedFile: new FormControl(null),
+      selectedFileUrl: new FormControl(null),
+    });
   }
 
   onAdd(){
-    this.palestrantes.push({ nome: '', descricao: '' });
+    this.palestrantes.push(this.create());
   }
 
   onDelete(index: number) {
-    if (index >= 0 && index < this.palestrantes.length) {
-      this.palestrantes.splice(index, 1);
-    }
+    this.palestrantes.removeAt(index);
   }
 
   onChange(event: any){
@@ -43,18 +50,21 @@ export class FormPageComponent {
   onFileSelected(event: any, index: number) {
     const file: File = event.target.files[0];
     if (file) {
-      this.palestrantes[index].selectedFile = file;
+      const selectedFileControl = this.palestrantes.at(index).get('selectedFile');
+      selectedFileControl?.setValue(file);
       this.displaySelectedImage(index);
     }
   }
 
   displaySelectedImage(index: number) {
-    if (this.palestrantes[index].selectedFile) {
+    const selectedFileControl = this.palestrantes.at(index).get('selectedFile');
+    if (selectedFileControl?.value) {
       const reader = new FileReader();
       reader.onload = (event: any) => {
-        this.palestrantes[index].selectedFileUrl = event.target.result;
+        const selectedFileUrlControl = this.palestrantes.at(index).get('selectedFileUrl');
+        selectedFileUrlControl?.setValue(event.target.result);
       };
-      reader.readAsDataURL(this.palestrantes[index].selectedFile);
+      reader.readAsDataURL(selectedFileControl.value);
     }
   }
 }

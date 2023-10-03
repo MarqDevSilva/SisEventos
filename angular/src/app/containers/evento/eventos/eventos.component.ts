@@ -20,7 +20,7 @@ export class EventosComponent {
   }
 
   onAdd(){
-    this.router.navigate(['new', 'event']);
+    this.router.navigate(['new']);
   }
 
   onEdit(evento: Evento){

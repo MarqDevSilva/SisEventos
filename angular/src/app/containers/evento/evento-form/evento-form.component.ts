@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTabGroup } from '@angular/material/tabs';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Evento } from 'src/app/model/evento';
 import { EventoService } from 'src/app/services/evento/evento.service';
 import { CapaService } from 'src/app/services/pagina-evento/capa.service';
@@ -16,10 +15,7 @@ import { SobreService } from 'src/app/services/pagina-evento/sobre.service';
 export class EventoFormComponent implements OnInit{
 
   infoBasic: FormGroup;
-  capa: FormGroup;
-  sobre: FormGroup;
-  palestrante: FormGroup;
-  palestrantes: FormArray;
+  eventPage: FormGroup;
 
   @ViewChild(MatTabGroup) tabGroup!: MatTabGroup;
 
@@ -28,9 +24,7 @@ export class EventoFormComponent implements OnInit{
     private snackBar: MatSnackBar,
     private serviceInfoBasic: EventoService,
     private serviceCapa: CapaService,
-    private serviceSobre: SobreService,
-    private router: Router,
-    private route: ActivatedRoute) {
+    private serviceSobre: SobreService) {
 
     this.infoBasic = this.formBuilder.group({
       id: [''],
@@ -42,35 +36,29 @@ export class EventoFormComponent implements OnInit{
       whatsApp: ['', Validators.pattern('')]
     });
 
-    this.capa = this.formBuilder.group({
-      evento: new FormGroup({
-        id: new FormControl(''),
+    this.eventPage = this.formBuilder.group({
+      capa: this.formBuilder.group({
+        evento: new FormGroup({
+          id: new FormControl(),
+        }),
+        tituloEvento: [''],
+        imgCapa: new FormControl()
       }),
-      tituloEvento: [''],
-      imgCapa: new FormControl()
-    });
 
-    this.sobre = this.formBuilder.group({
-      evento: new FormGroup({
-        id: new FormControl(''),
+      sobre: this.formBuilder.group({
+        evento: new FormGroup({
+          id: new FormControl(),
+        }),
+        descricao: [''],
+        bgColor: ['']
       }),
-      descricao: [''],
-      bgColor: ['']
-    });
 
-    this.palestrante = this.formBuilder.group({
-      evento: new FormGroup({
-        id: new FormControl(''),
-      }),
-      nome: [''],
-      descricao: [''],
-      img: new FormControl()
+      palestrantes: this.formBuilder.group({
+        evento: new FormGroup({
+          id: new FormControl(),
+        }),
+      })
     })
-
-    this.palestrantes = this.formBuilder.array([
-      this.palestrante
-    ])
-
   }
 
   ngOnInit(){
@@ -81,7 +69,7 @@ export class EventoFormComponent implements OnInit{
       this.serviceInfoBasic.save(this.infoBasic.value).subscribe(
         result => {
           this.onSuccess('Evento salvo com sucesso');
-          this.routerNew(result)
+          this.setId(result)
           this.next()
         },
         error => this.onError('Erro ao salvar evento'));
@@ -90,35 +78,21 @@ export class EventoFormComponent implements OnInit{
     }
   }
 
+  setId(evento: Evento){
+    this.eventPage.get('capa.evento.id')?.setValue(evento.id);
+    this.eventPage.get('sobre.evento.id')?.setValue(evento.id);
+    this.eventPage.get('palestrantes.evento.id')?.setValue(evento.id);
+  }
+
   submitPage(){
-    this.submitCapa();
-    this.submitSobre()
-    this.console();
-  }
+    const capa = this.eventPage.get('capa') as FormGroup;
+    const sobre = this.eventPage.get('sobre') as FormGroup;
+    const palestrante = this.eventPage.get('sobre') as FormGroup;
 
-  console(){
-    console.log(this.sobre.get('descricao')?.value)
-  }
+    this.serviceCapa.save(capa.value).subscribe();
 
-  submitCapa(){
-    if (this.capa.valid) {
-      this.capa.get('evento.id')?.setValue(this.routerGetId())
-      this.serviceCapa.save(this.capa.value).subscribe(
-        result => this.onSuccess('Página salva com sucesso'),
-        error => this.onError('Erro ao salvar página'));
-    } else {
-      this.invalid();
-    }
-  }
-
-  submitSobre(){
-    if(this.sobre.valid){
-      this.sobre.get('evento.id')?.setValue(this.routerGetId())
-      this.serviceSobre.save(this.sobre.value).subscribe(
-        result => this.onSuccess('Salvo'),
-        error => this.onError('Erro ao salvar descricao'));
-    } else {
-      this.invalid();
+    if(sobre){
+      this.serviceSobre.save(sobre.value).subscribe()
     }
   }
 
@@ -126,7 +100,6 @@ export class EventoFormComponent implements OnInit{
     const file = event.target.files[0];
     if(file){
       this.convertByte(file);
-      console.log(this.capa)
     }
   }
 
@@ -142,7 +115,7 @@ export class EventoFormComponent implements OnInit{
   }
 
   setImgForm(img: number[]){
-    this.capa.get('imgCapa')?.setValue(img);
+    this.eventPage.get('capa.imgCapa')?.setValue(img);
   }
 
   next(){
@@ -158,15 +131,6 @@ export class EventoFormComponent implements OnInit{
     if (currentIndex !== null && currentIndex > 0) {
     this.tabGroup.selectedIndex = currentIndex - 1;
     }
-  }
-
-  routerNew(evento: Evento){
-    this.router.navigate(['new', evento.id])
-  }
-
-  routerGetId(){
-    const eventoId = this.route.snapshot.paramMap.get('id');
-    return eventoId;
   }
 
   private onSuccess(body: string){

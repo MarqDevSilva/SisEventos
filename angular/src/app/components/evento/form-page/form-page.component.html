@@ -1,7 +1,7 @@
 <div class="container" id="container">
   <div class="row">
     <div class="col-2" id="menu">
-      <p><mat-slide-toggle [(ngModel)]="sobreToggle">Sobre</mat-slide-toggle></p>
+      <p><mat-slide-toggle [(ngModel)]="sobreToggle" (change)="sobreStatus($event.checked)">Sobre</mat-slide-toggle></p>
       <p><mat-slide-toggle [(ngModel)]="palestrantesToggle">Palestrantes</mat-slide-toggle></p>
       <p><mat-slide-toggle [(ngModel)]="programacaoToggle">Programação</mat-slide-toggle></p>
       <p><mat-slide-toggle [(ngModel)]="localToggle">Local</mat-slide-toggle></p>
@@ -35,7 +35,7 @@
         <div formArrayName="palestrantes">
           <mat-card class="container card" *ngIf="palestrantesToggle">
             <mat-card-title>Palestrantes</mat-card-title>
-            <div class="row" *ngFor="let palestrante of palestrantes.controls; let i = index" [formGroupName]="i">
+            <div class="row" *ngFor="let palestrante of eventPage.palestrantes let i = index" [formGroupName]="i">
               <div class="col-5">
                 <mat-form-field class="col-12" appearance="outline">
                   <mat-label>Nome</mat-label>
@@ -47,8 +47,8 @@
                 </mat-form-field>
               </div>
               <div class="col-6">
-                <div class="image-preview" [style.background-image]="'url(' + palestrante.get('selectedFileUrl')?.value + ')'"></div>
-                <input type="file" (change)="onFileSelected($event, i)">
+                <!-- <div class="image-preview" [style.background-image]="'url(' + palestrante.get('selectedFileUrl')?.value + ')'"></div>
+                <input type="file" (change)="onFileSelected($event, i)"> -->
               </div>
               <div class="col-1">
                 <button mat-mini-fab color="warn" (click)="onDelete(i)">

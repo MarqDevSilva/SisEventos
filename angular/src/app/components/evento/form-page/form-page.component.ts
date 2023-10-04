@@ -1,3 +1,4 @@
+import { Palestrante } from './../../../model/palestrante';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 
@@ -20,13 +21,11 @@ export class FormPageComponent {
   selectedFile: File | null = null;
   selectedFileUrl: string | null = null;
 
-  palestrantes = this.eventPage.get('palestrantes') as FormArray;
-
   constructor() {
   }
 
   onAdd(){
-    this.palestrantes.push(this.create());
+    this.eventPage.get('palestrantes')
   }
 
   create(){
@@ -42,6 +41,16 @@ export class FormPageComponent {
 
   onDelete(index: number) {
     this.palestrantes.removeAt(index);
+  }
+
+  sobreStatus(value: boolean){
+    if (value === true) {
+      this.eventPage.get('sobre.status')?.setValue(true);
+      console.log(value)
+    } else {
+      this.eventPage.get('sobre.status')?.setValue(false);
+      console.log(value)
+    }
   }
 
   onChange(event: any){

@@ -47,6 +47,7 @@ export class EventoFormComponent implements OnInit{
       }),
 
       sobre: this.formBuilder.group({
+        status: [],
         evento: new FormGroup({
           id: new FormControl(),
         }),
@@ -82,17 +83,17 @@ export class EventoFormComponent implements OnInit{
   }
 
   saveCapa(){
-    this.eventPage.get('capa.evento.id')?.setValue(this.id);
-    const capa = this.eventPage.get('capa') as FormGroup;
-    console.log(capa)
-    //this.serviceCapa.save(capa.value).subscribe();
+      this.eventPage.get('capa.evento.id')?.setValue(this.id);
+
+      const capa = this.eventPage.get('capa') as FormGroup;
+     //this.serviceCapa.save(capa.value).subscribe();
   }
 
   saveSobre(){
-    if(this.eventPage.get('sobre')){
+    const status = this.eventPage.get('sobre.status')?.value;
+    if(status === true || status === "true"){
       this.eventPage.get('sobre.evento.id')?.setValue(this.id);
       const sobre = this.eventPage.get('sobre') as FormGroup;
-      console.log(sobre)
       //this.serviceSobre.save(sobre.value).subscribe()
     }
   }

@@ -32,7 +32,7 @@
           </mat-card>
         </div>
 
-        <div formGroupName="palestrantes">
+        <div formArrayName="palestrantes">
           <mat-card class="container card" *ngIf="palestrantesToggle">
             <mat-card-title>Palestrantes</mat-card-title>
             <div class="row" *ngFor="let palestrante of palestrantes.controls; let i = index" [formGroupName]="i">

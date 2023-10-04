@@ -16,6 +16,7 @@ export class EventoFormComponent implements OnInit{
 
   infoBasic: FormGroup;
   eventPage: FormGroup;
+  id: string | null = '';
 
   @ViewChild(MatTabGroup) tabGroup!: MatTabGroup;
 
@@ -53,11 +54,7 @@ export class EventoFormComponent implements OnInit{
         bgColor: ['']
       }),
 
-      palestrantes: this.formBuilder.group({
-        evento: new FormGroup({
-          id: new FormControl(),
-        }),
-      })
+      palestrantes: this.formBuilder.array([])
     })
   }
 
@@ -68,8 +65,8 @@ export class EventoFormComponent implements OnInit{
     if (this.infoBasic.valid) {
       this.serviceInfoBasic.save(this.infoBasic.value).subscribe(
         result => {
-          this.onSuccess('Evento salvo com sucesso');
-          this.setId(result)
+          this.onSuccess('Evento salvo com sucesso')
+          this.id = result.id
           this.next()
         },
         error => this.onError('Erro ao salvar evento'));
@@ -78,21 +75,34 @@ export class EventoFormComponent implements OnInit{
     }
   }
 
-  setId(evento: Evento){
-    this.eventPage.get('capa.evento.id')?.setValue(evento.id);
-    this.eventPage.get('sobre.evento.id')?.setValue(evento.id);
-    this.eventPage.get('palestrantes.evento.id')?.setValue(evento.id);
+  submitPage(){
+    this.saveCapa();
+    this.saveSobre();
+    this.savePalestrante();
   }
 
-  submitPage(){
+  saveCapa(){
+    this.eventPage.get('capa.evento.id')?.setValue(this.id);
     const capa = this.eventPage.get('capa') as FormGroup;
-    const sobre = this.eventPage.get('sobre') as FormGroup;
-    const palestrante = this.eventPage.get('sobre') as FormGroup;
+    console.log(capa)
+    //this.serviceCapa.save(capa.value).subscribe();
+  }
 
-    this.serviceCapa.save(capa.value).subscribe();
+  saveSobre(){
+    if(this.eventPage.get('sobre')){
+      this.eventPage.get('sobre.evento.id')?.setValue(this.id);
+      const sobre = this.eventPage.get('sobre') as FormGroup;
+      console.log(sobre)
+      //this.serviceSobre.save(sobre.value).subscribe()
+    }
+  }
 
-    if(sobre){
-      this.serviceSobre.save(sobre.value).subscribe()
+  savePalestrante(){
+    if(this.eventPage.get('palestrante')){
+      this.eventPage.get('palestrante.evento.id')?.setValue(this.id);
+      const palestrante = this.eventPage.get('palestrante') as FormGroup;
+      console.log(palestrante)
+      //this.serviceSobre.save(sobre.value).subscribe()
     }
   }
 

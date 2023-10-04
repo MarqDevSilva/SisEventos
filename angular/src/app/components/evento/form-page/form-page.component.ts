@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-form-page',
@@ -9,6 +9,9 @@ import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 export class FormPageComponent {
 
+  @Input() eventPage: FormGroup = new FormGroup({});
+  @Output() changeIMG: EventEmitter<void> = new EventEmitter<void>();
+
   sobreToggle = false
   palestrantesToggle = false
   programacaoToggle = false
@@ -17,26 +20,24 @@ export class FormPageComponent {
   selectedFile: File | null = null;
   selectedFileUrl: string | null = null;
 
-  palestrantes: FormArray;
+  palestrantes = this.eventPage.get('palestrantes') as FormArray;
 
-  @Input() eventPage: FormGroup = new FormGroup({});
-  @Output() changeIMG: EventEmitter<void> = new EventEmitter<void>();
-
-  constructor(private formBuilder: FormBuilder) {
-    this.palestrantes = this.formBuilder.array([])
-  }
-
-  create(){
-    return new FormGroup({
-      nome: new FormControl(''),
-      descricao: new FormControl(''),
-      selectedFile: new FormControl(null),
-      selectedFileUrl: new FormControl(null),
-    });
+  constructor() {
   }
 
   onAdd(){
     this.palestrantes.push(this.create());
+  }
+
+  create(){
+    return new FormGroup({
+      evento: new FormGroup({
+        id: new FormControl(),
+      }),
+      nome: new FormControl(),
+      descricao: new FormControl(),
+      img: new FormControl(),
+    });
   }
 
   onDelete(index: number) {
